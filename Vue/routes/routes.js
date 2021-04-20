@@ -28,7 +28,7 @@ routes_list =     {
     children: [
         {
             path: '/',
-            name: 'cms.index',
+            name: 'form.index',
             component: Index,
             props: true,
             meta: {

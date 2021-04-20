@@ -15,7 +15,7 @@ class BackendController extends Controller
 
     public function index()
     {
-        return view('forms::backend.pages.index');
+        return view('forms::backend.pages.app');
     }
 
     public function getAssets(Request $request)
