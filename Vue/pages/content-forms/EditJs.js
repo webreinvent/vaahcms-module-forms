@@ -1,7 +1,7 @@
 import GlobalComponents from '../../vaahvue/helpers/GlobalComponents'
 import draggable from 'vuedraggable';
 
-let namespace = 'content_types';
+let namespace = 'content_forms';
 
 export default {
     props: ['id'],

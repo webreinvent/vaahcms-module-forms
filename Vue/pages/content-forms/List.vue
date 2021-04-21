@@ -5,7 +5,6 @@
         <!--left-->
         <div class="column"
              :class="{'is-12': page.list_view == 'large',
-                     'is-8': page.list_view == 'medium',
                      'is-3': page.list_view == 'small',
                      }">
 
@@ -16,7 +15,7 @@
                 <div class="card-header">
 
                     <div class="card-header-title">
-                        Content Types
+                        Content Forms
                     </div>
 
                     <div class="card-header-buttons">
@@ -24,7 +23,6 @@
 
                             <p class="control">
                                 <b-button type="is-light"
-                                          @click="toCreate()"
                                           icon-left="plus">
                                     Create
                                 </b-button>

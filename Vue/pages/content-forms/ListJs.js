@@ -3,12 +3,12 @@ import ListLargeView from './partials/ListLargeView';
 import ListMediumView from './partials/ListMediumView';
 import ListSmallView from './partials/ListSmallView';
 
-let namespace = 'content_types';
+let namespace = 'content_forms';
 
 export default {
     computed:{
         root() {return this.$store.getters['root/state']},
-        permissions() {return this.$store.getters['root/state'].permissions},
+        // permissions() {return this.$store.getters['root/state'].permissions},
         page() {return this.$store.getters[namespace+'/state']},
         ajax_url() {return this.$store.getters[namespace+'/state'].ajax_url},
         query_string() {return this.$store.getters[namespace+'/state'].query_string},
@@ -17,7 +17,7 @@ export default {
         ...GlobalComponents,
         ListLargeView,
         ListMediumView,
-        ListSmallView,
+        ListSmallView
 
     },
     data()
@@ -45,6 +45,7 @@ export default {
         }
     },
     mounted() {
+        console.log(1452);
         //----------------------------------------------------
         this.onLoad();
         //----------------------------------------------------

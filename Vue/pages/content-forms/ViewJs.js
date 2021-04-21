@@ -3,7 +3,7 @@ import TableTrView from '../../vaahvue/reusable/TableTrView'
 import TableTrActedBy from '../../vaahvue/reusable/TableTrActedBy'
 import TableTrStatus from '../../vaahvue/reusable/TableTrStatus'
 
-let namespace = 'content_types';
+let namespace = 'content_forms';
 
 export default {
     computed:{
@@ -34,6 +34,7 @@ export default {
         }
     },
     mounted() {
+
         //----------------------------------------------------
         this.onLoad();
         //----------------------------------------------------
@@ -192,7 +193,7 @@ export default {
         //---------------------------------------------------------------------
         resetActiveItem: function () {
             this.update('active_item', null);
-            this.$router.push({name:'content.types.list'});
+            this.$router.push({name:'content.forms.list'});
         },
         //---------------------------------------------------------------------
         hasPermission: function(slug)

@@ -6,10 +6,14 @@ use Illuminate\Routing\Controller;
 
 class ExtendController extends Controller
 {
+    public static $link;
 
     //----------------------------------------------------------
     public function __construct()
     {
+        $base_url = route('vh.backend.forms')."#/";
+        $link = $base_url;
+        self::$link = $link;
     }
     //----------------------------------------------------------
     public static function topLeftMenu()
@@ -38,8 +42,8 @@ class ExtendController extends Controller
         $links = [];
 
         $links[0] = [
-            'link' => route('vh.backend.forms'),
-            'icon' => 'cubes',
+            'link' => self::$link."content-forms/",
+            'icon' => 'file-alt',
             'label'=> 'Forms'
         ];
 

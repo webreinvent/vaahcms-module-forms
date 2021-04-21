@@ -25,24 +25,12 @@
                     </b-tooltip>
                 </b-table-column>
 
-                <b-table-column v-slot="props" field="plural" label="Plural">
+                <b-table-column  v-slot="props" field="theme" label="Theme">
 
-                    <b-tooltip label="Copy Plural Slug" type="is-dark">
+                    <b-tooltip v-if="props.row.theme" label="Copy Theme Slug" type="is-dark">
                         <vh-copy class="text-copyable"
-                                 :data="props.row.plural_slug"
-                                 :label="props.row.plural"
-                                 @copied="copiedData"
-                        >
-                        </vh-copy>
-
-                    </b-tooltip>
-                </b-table-column>
-
-                <b-table-column v-slot="props" field="singular" label="Singular">
-                    <b-tooltip label="Copy Singular Slug" type="is-dark">
-                        <vh-copy class="text-copyable"
-                                 :data="props.row.singular_slug"
-                                 :label="props.row.singular"
+                                 :data="props.row.theme.slug"
+                                 :label="props.row.theme.name"
                                  @copied="copiedData"
                         >
                         </vh-copy>

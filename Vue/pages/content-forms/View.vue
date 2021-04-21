@@ -27,7 +27,7 @@
                             <b-button icon-left="edit"
                                       type="is-light"
                                       tag="router-link"
-                                      :to="{name:'content.types.edit', params:{id: item.id}}">
+                                      :to="{name:'content.forms.edit', params:{id: item.id}}">
                                 Edit
                             </b-button>
                         </p>

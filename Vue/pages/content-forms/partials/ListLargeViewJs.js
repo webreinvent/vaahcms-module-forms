@@ -1,4 +1,4 @@
-let namespace = 'content_types';
+let namespace = 'content_forms';
 export default {
     computed: {
         root() {return this.$store.getters['root/state']},
@@ -60,7 +60,7 @@ export default {
         //---------------------------------------------------------------------
         setActiveItem: function (item) {
             this.update('active_item', item);
-            this.$router.push({name: 'content.types.view', params:{id:item.id}})
+            this.$router.push({name: 'content.forms.view', params:{id:item.id}})
         },
         //---------------------------------------------------------------------
         changeStatus: function (id) {
