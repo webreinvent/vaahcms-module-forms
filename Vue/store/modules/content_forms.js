@@ -41,24 +41,20 @@ export default {
         new_item:{
             name: null,
             slug: null,
-            plural: null,
-            plural_slug: null,
-            form_box: false,
-            mail_box: false,
-            messages_box: false,
-            additional_setting_box: false,
-            singular: null,
-            singular_slug: null,
-            excerpt: null,
             is_published: null,
             vh_theme_id: "",
-            is_commentable: null,
-            content_statuses: [
-                'draft',
-                'published',
-                'protected',
-            ],
-            meta: null,
+            fields:[],
+            mail:{
+                to:null,
+                from:{
+                    name:null,
+                    email:null
+                },
+                subject:null,
+                additional_header:null,
+                message:null
+            },
+            messages:{}
         },
 
     },

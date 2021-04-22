@@ -20,7 +20,7 @@ export default {
             namespace: namespace,
             is_content_loading: false,
             is_btn_loading: null,
-            labelPosition: 'on-border',
+            label_position: 'on-border',
             params: {},
             local_action: null,
             title: null,
@@ -222,19 +222,9 @@ export default {
             let new_item = {
                 name: null,
                 slug: null,
-                plural: null,
-                plural_slug: null,
-                singular: null,
-                singular_slug: null,
-                excerpt: null,
                 is_published: null,
-                is_commentable: null,
-                content_statuses: [
-                    'draft',
-                    'published',
-                    'protected',
-                ],
-                meta: null,
+                vh_theme_id: "",
+                fields:[]
             };
             return new_item;
         },
@@ -245,7 +235,7 @@ export default {
             let item = {
                 name: null,
                 slug: null,
-                vh_cms_field_type_id: id,
+                vh_form_field_type_id: id,
                 meta: meta,
                 type: {
                     id: id,
@@ -274,12 +264,13 @@ export default {
             console.log('--->', target);
             target.toggle();
 
+
         },
 
         //---------------------------------------------------------------------
-        deleteGroupField: function (fields, index) {
-            fields.splice(index, 1);
-            this.fields = fields;
+        deleteGroupField: function (new_item, index) {
+            new_item.fields.splice(index, 1);
+           this.update('new_item',new_item);
         },
         //---------------------------------------------------------------------
     }

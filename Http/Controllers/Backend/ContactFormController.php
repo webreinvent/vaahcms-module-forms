@@ -40,7 +40,7 @@ class ContactFormController extends Controller
     //----------------------------------------------------------
     public function postCreate(Request $request)
     {
-        $response = ContentType::postCreate($request);
+        $response = ContactForm::postCreate($request);
         return response()->json($response);
     }
     //----------------------------------------------------------

@@ -128,66 +128,14 @@ class ContactForm extends Model {
         $item = new static();
 
         $fillable['name'] = $inputs['name'];
-        $fillable['slug'] = $inputs['name'];
-        $fillable['permalink'] = $inputs['permalink'];
-        $fillable['vh_cms_content_type_id'] = $request->content_type->id;
-        $fillable['vh_theme_id'] = $request->vh_theme_id;
-        $fillable['vh_theme_template_id'] = $request->vh_theme_template_id;
-        $fillable['is_published_at'] = \Carbon::now();
-        if(!$request->has('status'))
-        {
-            $fillable['status'] = 'published';
-        } else{
-            $fillable['status'] = $request->status;
-        }
+        $fillable['slug'] = $inputs['slug'];
+        $fillable['vh_theme_id'] = $inputs['vh_theme_id'];
+        $fillable['is_published'] = $inputs['is_published'];
 
         $item->fill($fillable);
         $item->save();
 
-
-        foreach ($inputs['content_groups'] as $group)
-        {
-
-            foreach ($group['fields'] as $field)
-            {
-                $content_field = [];
-                $content_field['vh_cms_content_id'] = $item->id;
-                $content_field['vh_cms_form_group_id'] = $group['id'];
-                $content_field['vh_cms_form_field_id'] = $field['id'];
-
-                if(isset($field['content']))
-                {
-                    $content_field['content'] = $field['content'];
-                    $store_field = new ContentFormField();
-                    $store_field->fill($content_field);
-                    $store_field->save();
-                }
-
-            }
-
-        }
-
-        foreach ($inputs['template_groups'] as $group)
-        {
-
-            foreach ($group['fields'] as $field)
-            {
-                $content_field = [];
-                $content_field['vh_cms_content_id'] = $item->id;
-                $content_field['vh_cms_form_group_id'] = $group['id'];
-                $content_field['vh_cms_form_field_id'] = $field['id'];
-
-                if(isset($field['content']))
-                {
-                    $content_field['content'] = $field['content'];
-                    $store_field = new ContentFormField();
-                    $store_field->fill($content_field);
-                    $store_field->save();
-                }
-
-            }
-
-        }
+        ContactFormField::syncWithFormFields($item, $inputs['fields']);
 
         $response['status'] = 'success';
         $response['data']['item'] =$item;
@@ -259,17 +207,12 @@ class ContactForm extends Model {
     {
         $rules = array(
             'name' => 'required|max:255',
-            'status' => 'required',
+            'slug' => 'required',
+            'is_published' => 'required',
             'vh_theme_id' => 'required',
-            'vh_theme_template_id' => 'required'
+            'fields' => 'required|array',
+            'fields.*.name' => 'required|max:100',
         );
-
-        if($request->has('id'))
-        {
-            $rules['permalink'] = 'required|unique:vh_cms_contents,permalink,'.$request->id.'|max:100';
-        } else {
-            $rules['permalink'] = 'required|unique:vh_cms_contents|max:100';
-        }
 
         $validator = \Validator::make( $request->all(), $rules);
         if ( $validator->fails() ) {

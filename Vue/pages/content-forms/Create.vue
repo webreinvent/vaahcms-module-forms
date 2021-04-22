@@ -49,16 +49,16 @@
             <div class="card-content">
                 <div class="block">
 
-                    <b-field label="Name" :label-position="labelPosition">
+                    <b-field label="Name" :label-position="label_position">
                         <b-input v-model="new_item.name"></b-input>
                     </b-field>
 
-                    <b-field label="Slug" :label-position="labelPosition">
+                    <b-field label="Slug" :label-position="label_position">
                         <b-input v-model="new_item.slug"></b-input>
                     </b-field>
 
                     <b-field label="Themes"
-                             :label-position="labelPosition">
+                             :label-position="label_position">
 
                         <b-select v-model="new_item.vh_theme_id">
                             <option value="">Select a Theme</option>
@@ -71,7 +71,7 @@
                     </b-field>
 
                 </div>
-                <b-field label="Is Published" :label-position="labelPosition">
+                <b-field label="Is Published" :label-position="label_position">
                     <b-radio-button v-model="new_item.is_published"
                                     :native-value=1>
                         <span>Yes</span>
@@ -111,11 +111,12 @@
 
                                             <div class="card-content is-paddingless">
 
-                                                <div class="draggable" >
-                                                    <draggable class="dropzone" :list="fields"
+                                                <div class="draggable" style="background-color: #fafafa">
+
+                                                    <draggable class="dropzone" :list="new_item.fields"
                                                                :group="{name:'fields'}">
-                                                        <div v-if="fields.length>0"
-                                                             v-for="(field, f_index) in fields"
+                                                        <div v-if="new_item.fields.length>0"
+                                                             v-for="(field, f_index) in new_item.fields"
                                                              :key="f_index">
                                                             <div class="dropzone-field">
                                                                 <b-field class="is-marginless" >
@@ -149,7 +150,7 @@
                                                                     <b-tooltip label="Delete Field" type="is-dark">
                                                                         <p class="control">
 
-                                                                                <b-button @click="deleteGroupField(fields, f_index)"
+                                                                                <b-button @click="deleteGroupField(new_item, f_index)"
                                                                                           icon-left="trash"></b-button>
 
                                                                         </p>
@@ -204,8 +205,11 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-
                                                     </draggable>
+                                                    <p v-if="new_item.fields.length === 0"
+                                                       class="has-text-centered has-text-weight-bold">
+                                                        DROP HERE
+                                                    </p>
                                                 </div>
 
 
@@ -289,34 +293,31 @@
 
                     <b-tab-item label="Mail">
                         <section>
-                            <b-field label="Name">
-                                <b-input value="Kevin Garvey"></b-input>
-                            </b-field>
+                            <div class="mt-5">
+                                <div class="block">
 
-                            <b-field label="Email"
-                                     message="This email is invalid">
-                                <b-input type="email"
-                                         value="john@"
-                                         maxlength="30">
-                                </b-input>
-                            </b-field>
+                                    <b-field label="To" :label-position="label_position">
+                                        <b-input v-model="new_item.mail.to" placeholder="some@email.com" type="email"></b-input>
+                                    </b-field>
 
-                            <b-field label="Username"
-                                     message="This username is available">
-                                <b-input value="johnsilver" maxlength="30"></b-input>
-                            </b-field>
+                                    <b-field label="From" :label-position="label_position">
+                                        <b-input class="mr-3" name="name" v-model="new_item.mail.from.name" placeholder="Name" expanded></b-input>
+                                        <b-input name="email" placeholder="some@email.com" v-model="new_item.mail.from.email" type="email" expanded></b-input>
+                                    </b-field>
 
-                            <b-field label="Password"
-                                     :message="['Password is too short', 'Password must have at least 8 characters']">
-                                <b-input value="123" type="password" maxlength="30"></b-input>
-                            </b-field>
+                                    <b-field label="Subject" :label-position="label_position">
+                                        <b-input placeholder="Subject" v-model="new_item.mail.subject"></b-input>
+                                    </b-field>
 
-                            <b-field label="Subject">
-                                <b-select placeholder="Select a subject">
-                                    <option value="1">Option 1</option>
-                                    <option value="2">Option 2</option>
-                                </b-select>
-                            </b-field>
+                                    <b-field label="Additional Headers" :label-position="label_position">
+                                        <b-input v-model="new_item.mail.additional_header" type="textarea"></b-input>
+                                    </b-field>
+
+                                    <b-field label="Message Body" :label-position="label_position">
+                                        <b-input v-model="new_item.mail.message" type="textarea"></b-input>
+                                    </b-field>
+                                </div>
+                            </div>
                         </section>
                     </b-tab-item>
 
