@@ -32,6 +32,8 @@ class ContactForm extends Model {
         'slug',
         'is_published',
         'meta',
+        'mail_fields',
+        'message_fields',
         'created_by',
         'updated_by',
         'deleted_by'
@@ -62,6 +64,44 @@ class ContactForm extends Model {
     }
     //-------------------------------------------------
     public function getMetaAttribute($value)
+    {
+        if($value)
+        {
+            return json_decode($value);
+        }
+        return null;
+    }
+    //-------------------------------------------------
+    public function setMailFieldsAttribute($value)
+    {
+        if($value)
+        {
+            $this->attributes['mail_fields'] = json_encode($value);
+        } else{
+            $this->attributes['mail_fields'] = null;
+        }
+    }
+    //-------------------------------------------------
+    public function getMailFieldsAttribute($value)
+    {
+        if($value)
+        {
+            return json_decode($value);
+        }
+        return null;
+    }
+    //-------------------------------------------------
+    public function setMessageFieldsAttribute($value)
+    {
+        if($value)
+        {
+            $this->attributes['message_fields'] = json_encode($value);
+        } else{
+            $this->attributes['message_fields'] = null;
+        }
+    }
+    //-------------------------------------------------
+    public function getMessageFieldsAttribute($value)
     {
         if($value)
         {
@@ -114,6 +154,19 @@ class ContactForm extends Model {
         );
     }
     //-------------------------------------------------
+    public function fields(){
+        return $this->belongsToMany(
+            FormFieldType::class,
+            'vh_form_contact_form_fields',
+            'vh_form_contact_form_id',
+            'vh_form_field_type_id'
+        )->withPivot(['id','uuid',
+            'sort',
+            'name',
+            'slug',
+            'meta',]);
+}
+    //-------------------------------------------------
     public static function postCreate($request)
     {
 
@@ -131,6 +184,8 @@ class ContactForm extends Model {
         $fillable['slug'] = $inputs['slug'];
         $fillable['vh_theme_id'] = $inputs['vh_theme_id'];
         $fillable['is_published'] = $inputs['is_published'];
+        $fillable['mail_fields'] = $inputs['mail_fields'];
+        $fillable['message_fields'] = $inputs['message_fields'];
 
         $item->fill($fillable);
         $item->save();

@@ -32,6 +32,12 @@ class ContactFormController extends Controller
 
         $data['bulk_actions'] = vh_general_bulk_actions();
 
+        $data['form_messages'] = [
+            'success' => 'Your message was sent successfully. Thanks.',
+            'failure' => 'Failed to send your message.',
+            'term' => 'Please accept the terms to proceed.'
+        ];
+
         $response['status'] = 'success';
         $response['data'] = $data;
 

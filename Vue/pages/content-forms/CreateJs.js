@@ -26,30 +26,26 @@ export default {
             title: null,
             new_status: null,
             disable_status_editing: true,
-            edit_status_index: null,
-            fields:[
-                    {
-                        id:1,
-                        name:"First Name",
-                        slug:"first_name",
-                        is_required:false,
-                        is_searchable:false,
-                        excerpt:'Testing excerpt',
-                        meta:{
-                            is_hidden:false
-                        },
-                        type:{
-                            name:"Text"
-                        }
-                    }
-                ]
+            edit_status_index: null
         }
     },
     watch: {
         $route(to, from) {
-            this.updateView()
+            this.updateView();
+            this.updateMessages();
         },
 
+        'page.assets': {
+            deep: true,
+            handler(new_val, old_val) {
+
+                if(new_val)
+                {
+                    this.updateMessages();
+                }
+
+            }
+        },
         'new_item.name': {
             deep: true,
             handler(new_val, old_val) {
@@ -57,32 +53,6 @@ export default {
                 if(new_val)
                 {
                     this.new_item.slug = this.$vaah.strToSlug(new_val);
-                    this.updateNewItem();
-                }
-
-            }
-        },
-
-        'new_item.plural': {
-            deep: true,
-            handler(new_val, old_val) {
-
-                if(new_val)
-                {
-                    this.new_item.plural_slug = this.$vaah.strToSlug(new_val);
-                    this.updateNewItem();
-                }
-
-            }
-        },
-
-        'new_item.singular': {
-            deep: true,
-            handler(new_val, old_val) {
-
-                if(new_val)
-                {
-                    this.new_item.singular_slug = this.$vaah.strToSlug(new_val);
                     this.updateNewItem();
                 }
 
@@ -224,7 +194,18 @@ export default {
                 slug: null,
                 is_published: null,
                 vh_theme_id: "",
-                fields:[]
+                fields:[],
+                mail_fields:{
+                    to:null,
+                    from:{
+                        name:null,
+                        email:null
+                    },
+                    subject:null,
+                    additional_header:null,
+                    message:null
+                },
+                message_fields:JSON.parse(JSON.stringify(this.page.assets.form_messages))
             };
             return new_item;
         },
@@ -271,6 +252,15 @@ export default {
         deleteGroupField: function (new_item, index) {
             new_item.fields.splice(index, 1);
            this.update('new_item',new_item);
+        },
+
+        //---------------------------------------------------------------------
+        updateMessages : function (){
+            if(this.page.assets.form_messages){
+                this.new_item.message_fields = JSON.parse(JSON.stringify(this.page.assets.form_messages));
+                this.update('new_item',this.new_item);
+            }
+
         },
         //---------------------------------------------------------------------
     }

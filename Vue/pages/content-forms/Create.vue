@@ -8,7 +8,7 @@
             <header class="card-header">
 
                 <div class="card-header-title">
-                    <span>Create New Content Type</span>
+                    <span>Create New Form</span>
                 </div>
 
 
@@ -297,24 +297,24 @@
                                 <div class="block">
 
                                     <b-field label="To" :label-position="label_position">
-                                        <b-input v-model="new_item.mail.to" placeholder="some@email.com" type="email"></b-input>
+                                        <b-input v-model="new_item.mail_fields.to" placeholder="some@email.com" type="email"></b-input>
                                     </b-field>
 
                                     <b-field label="From" :label-position="label_position">
-                                        <b-input class="mr-3" name="name" v-model="new_item.mail.from.name" placeholder="Name" expanded></b-input>
-                                        <b-input name="email" placeholder="some@email.com" v-model="new_item.mail.from.email" type="email" expanded></b-input>
+                                        <b-input class="mr-3" name="name" v-model="new_item.mail_fields.from.name" placeholder="Name" expanded></b-input>
+                                        <b-input name="email" placeholder="some@email.com" v-model="new_item.mail_fields.from.email" type="email" expanded></b-input>
                                     </b-field>
 
                                     <b-field label="Subject" :label-position="label_position">
-                                        <b-input placeholder="Subject" v-model="new_item.mail.subject"></b-input>
+                                        <b-input placeholder="Subject" v-model="new_item.mail_fields.subject"></b-input>
                                     </b-field>
 
                                     <b-field label="Additional Headers" :label-position="label_position">
-                                        <b-input v-model="new_item.mail.additional_header" type="textarea"></b-input>
+                                        <b-input v-model="new_item.mail_fields.additional_header" type="textarea"></b-input>
                                     </b-field>
 
                                     <b-field label="Message Body" :label-position="label_position">
-                                        <b-input v-model="new_item.mail.message" type="textarea"></b-input>
+                                        <b-input v-model="new_item.mail_fields.message" type="textarea"></b-input>
                                     </b-field>
                                 </div>
                             </div>
@@ -322,12 +322,24 @@
                     </b-tab-item>
 
                     <b-tab-item label="Messages">
-                        What light is light, if Silvia be not seen? <br>
-                        What joy is joy, if Silvia be not by— <br>
-                        Unless it be to think that she is by <br>
-                        And feed upon the shadow of perfection? <br>
-                        Except I be by Silvia in the night, <br>
-                        There is no music in the nightingale.
+                        <section>
+                            <div class="mt-5">
+                                <div class="block">
+
+                                    <b-field label="Success" type="is-success" :label-position="label_position">
+                                        <b-input v-model="new_item.message_fields.success"></b-input>
+                                    </b-field>
+
+                                    <b-field label="Failure" type="is-danger" :label-position="label_position">
+                                        <b-input v-model="new_item.message_fields.failure"></b-input>
+                                    </b-field>
+
+                                    <b-field label="Terms" type="is-info" :label-position="label_position">
+                                        <b-input v-model="new_item.message_fields.term"></b-input>
+                                    </b-field>
+                                </div>
+                            </div>
+                        </section>
                     </b-tab-item>
 
                     <b-tab-item label="Additional Setting" disabled>

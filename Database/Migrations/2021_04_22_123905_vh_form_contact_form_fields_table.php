@@ -23,6 +23,7 @@ class VhFormContactFormFieldsTable extends Migration
             $table->string('name', 100)->nullable()->index();
             $table->string('slug', 100)->nullable()->index();
             $table->string('excerpt')->nullable();
+            $table->boolean('is_required')->nullable();
 
             $table->text('meta')->nullable();
 

@@ -44,7 +44,7 @@ export default {
             is_published: null,
             vh_theme_id: "",
             fields:[],
-            mail:{
+            mail_fields:{
                 to:null,
                 from:{
                     name:null,
@@ -54,7 +54,7 @@ export default {
                 additional_header:null,
                 message:null
             },
-            messages:{}
+            message_fields:{}
         },
 
     },

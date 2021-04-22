@@ -33,6 +33,7 @@ class ContactFormField extends Model {
         'name',
         'slug',
         'meta',
+        'is_required',
         'created_by',
         'updated_by',
         'deleted_by'
