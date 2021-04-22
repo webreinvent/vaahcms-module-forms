@@ -103,7 +103,7 @@ export default {
         //---------------------------------------------------------------------
         toContentStructure: function (item) {
             this.update('active_item', item);
-            this.$router.push({name:'content.types.content.structure', params:{id:item.id}});
+            this.$router.push({name:'content.forms.content.structure', params:{id:item.id}});
 
         }
         //---------------------------------------------------------------------

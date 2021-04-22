@@ -125,7 +125,7 @@ export default {
 
                 if(action == 'bulk-delete')
                 {
-                    this.$router.push({name: 'content.types.list'});
+                    this.$router.push({name: 'content.forms.list'});
                 } else
                 {
                     this.getItem();

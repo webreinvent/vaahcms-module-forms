@@ -23,6 +23,7 @@
 
                             <p class="control">
                                 <b-button type="is-light"
+                                          @click="toCreate()"
                                           icon-left="plus">
                                     Create
                                 </b-button>
@@ -53,7 +54,7 @@
 
                             <!--left-->
                             <div class="level-left" >
-                                <div  class="level-item" >
+                                <!--<div  class="level-item" >
                                     <b-field >
 
                                         <b-select placeholder="- Bulk Actions -"
@@ -91,7 +92,7 @@
                                         </p>
 
                                     </b-field>
-                                </div>
+                                </div>-->
                             </div>
                             <!--/left-->
 

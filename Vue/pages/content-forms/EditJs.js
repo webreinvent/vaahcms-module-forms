@@ -143,7 +143,7 @@ export default {
             {
                 //if item does not exist or delete then redirect to list
                 this.update('active_item', null);
-                this.$router.push({name: 'content.types.list'});
+                this.$router.push({name: 'content.forms.list'});
             }
         },
         //---------------------------------------------------------------------
@@ -168,7 +168,7 @@ export default {
                 {
                     this.saveAndClose()
                 }else{
-                    this.$router.push({name: 'content.types.view', params:{id:this.id}});
+                    this.$router.push({name: 'content.forms.view', params:{id:this.id}});
                     this.$root.$emit('eReloadItem');
                 }
 
@@ -189,7 +189,7 @@ export default {
         //---------------------------------------------------------------------
         saveAndClose: function () {
             this.update('active_item', null);
-            this.$router.push({name:'content.types.list'});
+            this.$router.push({name:'content.forms.list'});
         },
         //---------------------------------------------------------------------
 

@@ -53,7 +53,7 @@
                         <p class="control">
                             <b-button tag="router-link"
                                       type="is-light"
-                                      :to="{name: 'content.types.view', params:{id:item.id}}"
+                                      :to="{name: 'content.forms.view', params:{id:item.id}}"
                                       icon-left="times">
                             </b-button>
                         </p>

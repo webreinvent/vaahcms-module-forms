@@ -6,6 +6,7 @@ use Illuminate\Routing\Controller;
 use VaahCms\Modules\Cms\Entities\ContentType;
 use VaahCms\Modules\Cms\Entities\FieldType;
 use VaahCms\Modules\Forms\Models\ContactForm;
+use VaahCms\Modules\Forms\Models\FormFieldType;
 use WebReinvent\VaahCms\Entities\Theme;
 
 class ContactFormController extends Controller
@@ -22,6 +23,10 @@ class ContactFormController extends Controller
 
     public function getAssets(Request $request)
     {
+
+        $data['field_types'] = FormFieldType::select('id', 'name', 'slug', 'meta')
+            ->get();
+
         $data['currency_codes'] = vh_get_currency_list();
         $data['themes'] = Theme::getActiveThemes();
 

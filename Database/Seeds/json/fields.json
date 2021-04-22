@@ -1,0 +1,138 @@
+[
+
+    {
+        "name": "Text",
+        "excerpt": "",
+        "meta": {
+            "container_start": "span",
+            "container_end": "short-text",
+            "is_hidden": false
+        }
+    },
+    {
+        "name": "Textarea",
+        "excerpt": "",
+        "meta": {
+            "container_tag": "span",
+            "container_attr_class": "long-text",
+            "is_hidden": false
+        }
+    },
+    {
+        "name": "Email",
+        "excerpt": "",
+        "meta": {
+            "container_tag": "span",
+            "container_attr_class": "email",
+            "is_hidden": false
+        }
+    },
+    {
+        "name": "Url",
+        "excerpt": "",
+        "meta": {
+            "container_tag": "span",
+            "container_attr_class": "url",
+            "is_hidden": false
+        }
+    },
+    {
+        "name": "Tel",
+        "excerpt": "",
+        "meta": {
+            "container_tag": "span",
+            "container_attr_class": "tel",
+            "is_hidden": false
+        }
+    },
+    {
+        "name": "Number",
+        "excerpt": "",
+        "meta": {
+            "container_start": "span",
+            "container_end": "number",
+            "is_hidden": true
+        }
+    },
+    {
+        "name": "Date",
+        "excerpt": "",
+        "meta": {
+            "container_start": "span",
+            "container_end": "date",
+            "is_hidden": true
+        }
+    },
+    {
+        "name": "Drop-Down Menu",
+        "excerpt": "",
+        "meta": {
+            "container_start": "span",
+            "container_end": "drop-down menu",
+            "is_hidden": true
+        }
+    },
+    {
+        "name": "Checkboxes",
+        "excerpt": "",
+        "meta": {
+            "container_start": "span",
+            "container_end": "checkboxes",
+            "is_hidden": true
+        }
+    },
+    {
+        "name": "Radio Buttons",
+        "excerpt": "",
+        "meta": {
+            "container_start": "span",
+            "container_end": "radio buttons",
+            "is_hidden": true
+        }
+    },
+    {
+        "name": "Acceptance",
+        "excerpt": "",
+        "meta": {
+            "container_start": "span",
+            "container_end": "acceptance",
+            "is_hidden": true
+        }
+    },
+    {
+        "name": "Quiz",
+        "excerpt": "",
+        "meta": {
+            "container_start": "span",
+            "container_end": "quiz",
+            "is_hidden": true
+        }
+    },
+    {
+        "name": "CAPTCHA",
+        "excerpt": "",
+        "meta": {
+            "container_start": "span",
+            "container_end": "captcha",
+            "is_hidden": true
+        }
+    },
+    {
+        "name": "File",
+        "excerpt": "",
+        "meta": {
+            "container_start": "span",
+            "container_end": "file",
+            "is_hidden": true
+        }
+    },
+    {
+        "name": "Submit",
+        "excerpt": "",
+        "meta": {
+            "container_start": "span",
+            "container_end": "submit",
+            "is_hidden": true
+        }
+    }
+]

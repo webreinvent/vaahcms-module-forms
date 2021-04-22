@@ -79,7 +79,7 @@ export default {
         toCreate: function()
         {
             this.update('active_item', null);
-            this.$router.push({name:'content.types.create'});
+            this.$router.push({name:'content.forms.create'});
         },
         //---------------------------------------------------------------------
         updateQueryString: function()

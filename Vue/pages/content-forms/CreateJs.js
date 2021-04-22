@@ -1,7 +1,7 @@
 import GlobalComponents from '../../vaahvue/helpers/GlobalComponents'
 import draggable from 'vuedraggable';
 
-let namespace = 'content_types';
+let namespace = 'content_forms';
 
 export default {
     computed:{
@@ -27,6 +27,22 @@ export default {
             new_status: null,
             disable_status_editing: true,
             edit_status_index: null,
+            fields:[
+                    {
+                        id:1,
+                        name:"First Name",
+                        slug:"first_name",
+                        is_required:false,
+                        is_searchable:false,
+                        excerpt:'Testing excerpt',
+                        meta:{
+                            is_hidden:false
+                        },
+                        type:{
+                            name:"Text"
+                        }
+                    }
+                ]
         }
     },
     watch: {
@@ -168,7 +184,7 @@ export default {
                 {
                     this.saveAndClose();
                 }else{
-                    //this.$router.push({name: 'content.types.list'});
+                    //this.$router.push({name: 'content.forms.list'});
                     this.saveAndNew();
 
                     // this.$root.$emit('eReloadItem');
@@ -187,7 +203,7 @@ export default {
         //---------------------------------------------------------------------
         saveAndClose: function () {
             this.update('active_item', null);
-            this.$router.push({name:'content.types.list'});
+            this.$router.push({name:'content.forms.list'});
         },
         //---------------------------------------------------------------------
         saveAndNew: function () {
@@ -221,6 +237,49 @@ export default {
                 meta: null,
             };
             return new_item;
+        },
+        //---------------------------------------------------------------------
+        cloneField: function({ id, name, slug, meta })
+        {
+
+            let item = {
+                name: null,
+                slug: null,
+                vh_cms_field_type_id: id,
+                meta: meta,
+                type: {
+                    id: id,
+                    name: name,
+                    slug: slug,
+                    meta: meta,
+                }
+            };
+
+            console.log('--->cloned item', item);
+
+
+            return item;
+
+
+        },//---------------------------------------------------------------------
+        toggleFieldOptions: function (event) {
+
+            let el = event.target;
+
+            console.log('--->', el);
+
+            let target = $(el).closest('.dropzone-field').find('.dropzone-field-options');
+
+
+            console.log('--->', target);
+            target.toggle();
+
+        },
+
+        //---------------------------------------------------------------------
+        deleteGroupField: function (fields, index) {
+            fields.splice(index, 1);
+            this.fields = fields;
         },
         //---------------------------------------------------------------------
     }
