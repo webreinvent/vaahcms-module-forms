@@ -22,7 +22,7 @@ export default {
             namespace: namespace,
             is_content_loading: false,
             is_btn_loading: null,
-            labelPosition: 'on-border',
+            label_position: 'on-border',
             params: {},
             local_action: null,
             title: null,
@@ -33,7 +33,7 @@ export default {
     },
     watch: {
         $route(to, from) {
-            this.updateView()
+            this.onLoad()
         },
 
         'item.name': {
@@ -137,6 +137,7 @@ export default {
 
             if(data)
             {
+                console.log('working');
                 this.title = data.name;
                 this.update('active_item', data);
             } else
@@ -168,7 +169,6 @@ export default {
                 {
                     this.saveAndClose()
                 }else{
-                    this.$router.push({name: 'content.forms.view', params:{id:this.id}});
                     this.$root.$emit('eReloadItem');
                 }
 
@@ -212,6 +212,50 @@ export default {
             this.item.content_statuses.push(this.status);
             this.status = null;
             this.update('item', this.item);
+        },
+        //---------------------------------------------------------------------
+        cloneField: function({ id, name, slug, meta })
+        {
+
+            let item = {
+                name: null,
+                slug: null,
+                vh_form_field_type_id: id,
+                meta: meta,
+                type: {
+                    id: id,
+                    name: name,
+                    slug: slug,
+                    meta: meta,
+                }
+            };
+
+            console.log('--->cloned item', item);
+
+
+            return item;
+
+
+        },//---------------------------------------------------------------------
+        toggleFieldOptions: function (event) {
+
+            let el = event.target;
+
+            console.log('--->', el);
+
+            let target = $(el).closest('.dropzone-field').find('.dropzone-field-options');
+
+
+            console.log('--->', target);
+            target.toggle();
+
+
+        },
+
+        //---------------------------------------------------------------------
+        deleteGroupField: function (item, index) {
+            item.fields.splice(index, 1);
+            this.update('active_item',item);
         },
     }
 }

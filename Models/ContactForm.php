@@ -154,18 +154,12 @@ class ContactForm extends Model {
         );
     }
     //-------------------------------------------------
-    public function fields(){
-        return $this->belongsToMany(
-            FormFieldType::class,
-            'vh_form_contact_form_fields',
-            'vh_form_contact_form_id',
-            'vh_form_field_type_id'
-        )->withPivot(['id','uuid',
-            'sort',
-            'name',
-            'slug',
-            'meta',]);
-}
+    public function fields()
+    {
+        return $this->hasMany(ContactFormField::class,
+            'vh_form_contact_form_id', 'id'
+        )->orderBy('sort', 'asc');
+    }
     //-------------------------------------------------
     public static function postCreate($request)
     {
@@ -291,6 +285,9 @@ class ContactForm extends Model {
 
         $item = static::where('id', $id)
             ->with(['theme', 'createdByUser', 'updatedByUser', 'deletedByUser'])
+            ->with(['fields' => function($f){
+                $f->orderBy('sort', 'asc')->with(['type']);
+            }])
             ->withTrashed()
             ->first();
 
@@ -383,8 +380,7 @@ class ContactForm extends Model {
         $item->save();
 
 
-        static::storeFormGroups($item, $inputs['content_form_groups']);
-        static::storeFormGroups($item, $inputs['template_form_groups']);
+        ContactFormField::syncWithFormFields($item, $inputs['fields']);
 
 
         $response['status'] = 'success';
@@ -483,12 +479,12 @@ class ContactForm extends Model {
             }
 
             if($request['data']){
-                $role->status = $request['data'];
+                $role->is_published = $request['data'];
             }else{
-                if($role->status == 1){
-                    $role->status = 0;
+                if($role->is_published == 1){
+                    $role->is_published = 0;
                 }else{
-                    $role->status = 1;
+                    $role->is_published = 1;
                 }
             }
             $role->save();

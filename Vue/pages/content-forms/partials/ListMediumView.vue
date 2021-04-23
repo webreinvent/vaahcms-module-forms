@@ -77,7 +77,8 @@
 
                     <b-tooltip label="Content Structure" type="is-dark">
                         <b-button size="is-small"
-                                  @click="toContentStructure(props.row)"
+                                  tag="router-link"
+                                  :to="{name:'content.forms.edit', params:{id: props.row.id}}"
                                   icon-left="align-left">
                         </b-button>
                     </b-tooltip>

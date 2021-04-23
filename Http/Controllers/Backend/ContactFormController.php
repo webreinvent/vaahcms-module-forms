@@ -81,7 +81,7 @@ class ContactFormController extends Controller
     //----------------------------------------------------------
     public function postStore(Request $request,$id)
     {
-        $response = ContentType::postStore($request,$id);
+        $response = ContactForm::postStore($request,$id);
         return response()->json($response);
     }
 
@@ -113,7 +113,7 @@ class ContactFormController extends Controller
 
             //------------------------------------
             case 'bulk-change-status':
-                $response = ContentType::bulkStatusChange($request);
+                $response = ContactForm::bulkStatusChange($request);
                 break;
             //------------------------------------
             case 'bulk-trash':

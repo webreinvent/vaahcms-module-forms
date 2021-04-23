@@ -1,6 +1,6 @@
 <script src="./EditJs.js"></script>
 <template>
-    <div class="column" v-if="page.assets && item">
+    <div class="column is-8" v-if="page.assets && item">
 
         <div class="card">
 
@@ -8,18 +8,13 @@
             <header class="card-header">
 
                 <div class="card-header-title">
-                    <span>{{$vaah.limitString(title, 15)}}</span>
+                    <span>Create New Form</span>
                 </div>
 
 
                 <div class="card-header-buttons">
 
                     <div class="field has-addons is-pulled-right">
-                        <p class="control">
-                            <b-button @click="$vaah.copy(item.id)"  type="is-light">
-                                <small><b>#{{item.id}}</b></small>
-                            </b-button>
-                        </p>
 
                         <p class="control">
                             <b-button icon-left="save"
@@ -30,30 +25,12 @@
                             </b-button>
                         </p>
 
-                        <p class="control">
 
-
-                            <b-dropdown aria-role="list" position="is-bottom-left">
-                                <button class="button is-light"
-                                        slot="trigger">
-                                    <b-icon icon="caret-down"></b-icon>
-                                </button>
-
-                                <b-dropdown-item aria-role="listitem"
-                                                 @click="setLocalAction('save-and-close')">
-                                    <b-icon icon="check"></b-icon>
-                                    Save & Close
-                                </b-dropdown-item>
-
-                            </b-dropdown>
-
-
-                        </p>
 
                         <p class="control">
                             <b-button tag="router-link"
                                       type="is-light"
-                                      :to="{name: 'content.forms.view', params:{id:item.id}}"
+                                      :to="{name: 'content.forms.list'}"
                                       icon-left="times">
                             </b-button>
                         </p>
@@ -72,117 +49,306 @@
             <div class="card-content">
                 <div class="block">
 
-                    <b-field label="Name" :label-position="labelPosition">
+                    <b-field label="Name" :label-position="label_position">
                         <b-input v-model="item.name"></b-input>
                     </b-field>
 
-                    <b-field label="Slug" :label-position="labelPosition">
+                    <b-field label="Slug" :label-position="label_position">
                         <b-input v-model="item.slug"></b-input>
                     </b-field>
 
-                    <b-field label="Content Plural Name" :label-position="labelPosition">
-                        <b-input v-model="item.plural"></b-input>
+                    <b-field label="Themes"
+                             :label-position="label_position">
+
+                        <b-select v-model="item.vh_theme_id">
+                            <option value="">Select a Theme</option>
+                            <option v-for="(theme, index) in page.assets.themes"
+                                    :value="theme.id"
+                            >{{theme.name}}</option>
+                        </b-select>
+
+
                     </b-field>
 
-                    <b-field label="Content Plural Slug" :label-position="labelPosition">
-                        <b-input v-model="item.plural_slug"></b-input>
-                    </b-field>
+                </div>
+                <b-field label="Is Published" :label-position="label_position">
+                    <b-radio-button v-model="item.is_published"
+                                    :native-value=1>
+                        <span>Yes</span>
+                    </b-radio-button>
 
-                    <b-field label="Content Singular Name" :label-position="labelPosition">
-                        <b-input v-model="item.singular"></b-input>
-                    </b-field>
+                    <b-radio-button type="is-danger"
+                                    v-model="item.is_published"
+                                    :native-value=0>
+                        <span>No</span>
+                    </b-radio-button>
+                </b-field>
 
-                    <b-field label="Content Singular Slug" :label-position="labelPosition">
-                        <b-input v-model="item.singular_slug"></b-input>
-                    </b-field>
-
-                    <b-field label="Excerpt" :label-position="labelPosition">
-                        <b-input type="textarea"
-                                 maxlength="200"
-                                 v-model="item.excerpt"></b-input>
-                    </b-field>
-
-                    <b-field label="Is Published" :label-position="labelPosition">
-                        <b-radio-button v-model="item.is_published"
-                                        :native-value=1>
-                            <span>Yes</span>
-                        </b-radio-button>
-
-                        <b-radio-button type="is-danger"
-                                        v-model="item.is_published"
-                                        :native-value=0>
-                            <span>No</span>
-                        </b-radio-button>
-                    </b-field>
-
-                    <b-field label="Is Comments Allowed" :label-position="labelPosition">
-                        <b-radio-button v-model="item.is_commentable"
-                                        :native-value=1>
-                            <span>Yes</span>
-                        </b-radio-button>
-
-                        <b-radio-button type="is-danger"
-                                        v-model="item.is_commentable"
-                                        :native-value=0>
-                            <span>No</span>
-                        </b-radio-button>
-                    </b-field>
+                <b-tabs type="is-boxed">
+                    <b-tab-item label="Form">
 
 
-                    <b-field label="List Statuses" :label-position="labelPosition">
+                        <div class="columns">
 
-                        <div class="draggable">
-                            <draggable v-model="item.content_statuses"
-                                       group="content_statuses"
-                            >
+                            <div class="column">
 
-                                <div v-for="(status, index) in item.content_statuses"
-                                     :key="index">
+                                <div class="card">
 
+                                    <!--header-->
+                                    <header class="card-header">
 
-                                    <b-field class="has-margin-bottom-5" expanded>
-                                        <p class="control drag">
-                                            <span class="button is-static">:::</span>
-                                        </p>
+                                        <div class="card-header-title">
+                                            <span>Form Structure</span>
+                                        </div>
 
-                                        <b-input v-model="item.content_statuses[index]"
-                                                 v-if="index == edit_status_index && !disable_status_editing"
-                                                 expanded></b-input>
+                                    </header>
+                                    <!--/header-->
 
-                                        <b-input v-model="item.content_statuses[index]"
-                                                 v-else
-                                                 disabled
-                                                 expanded></b-input>
+                                    <!--content-->
 
 
-                                        <p class="control">
-                                            <b-button
-                                                    @click="toggleEditStatus(index)"
-                                                    icon-left="edit">
-                                            </b-button>
-                                        </p>
-                                    </b-field>
+                                    <div class="card">
+
+                                        <div class="card-content is-paddingless">
+
+                                            <div class="draggable" style="background-color: #fafafa">
+
+                                                <draggable class="dropzone" :list="item.fields"
+                                                           :group="{name:'fields'}">
+                                                    <div v-if="item.fields.length>0"
+                                                         v-for="(field, f_index) in item.fields"
+                                                         :key="f_index">
+                                                        <div class="dropzone-field">
+                                                            <b-field class="is-marginless" >
+                                                                <p class="control drag">
+                                                                    <span class="button is-static">:::</span>
+                                                                </p>
+
+                                                                <p class="control " v-if="field.type">
+                                                        <span class="button dropzone-field-label is-static">
+                                                            {{field.type.name}}
+                                                        </span>
+                                                                </p>
+                                                                <b-input v-model="field.name" expanded placeholder="Field Name">
+                                                                </b-input>
+                                                                <b-tooltip label="Copy Slug" type="is-dark">
+                                                                    <p class="control">
+                                                                        <b-button @click="$vaah.copy(field.slug)"
+                                                                        >#{{field.id}}</b-button>
+                                                                    </p>
+                                                                </b-tooltip>
+
+                                                                <b-tooltip label="Field Option" type="is-dark">
+                                                                    <p class="control">
+
+                                                                        <b-button icon-left="cog"
+                                                                                  @click="toggleFieldOptions($event)"></b-button>
+
+                                                                    </p>
+                                                                </b-tooltip>
+
+                                                                <b-tooltip label="Delete Field" type="is-dark">
+                                                                    <p class="control">
+
+                                                                        <b-button @click="deleteGroupField(item, f_index)"
+                                                                                  icon-left="trash"></b-button>
+
+                                                                    </p>
+                                                                </b-tooltip>
+
+                                                            </b-field>
+                                                            <div class="dropzone-field-options ">
+
+                                                                <table class="table">
+                                                                    <tr>
+                                                                        <td width="180" >
+                                                                            Is required
+                                                                        </td>
+                                                                        <td>
+                                                                            <b-switch v-model="field.is_required" true-value=1
+                                                                                      type="is-success">
+                                                                            </b-switch>
+                                                                        </td>
+                                                                    </tr>
+
+                                                                    <tr>
+                                                                        <td >
+                                                                            Excerpt
+                                                                        </td>
+                                                                        <td>
+                                                                            <b-input maxlength="200" v-model="field.excerpt"
+                                                                                     type="textarea"></b-input>
+                                                                        </td>
+                                                                    </tr>
+
+                                                                    <template v-if="field.meta">
+                                                                        <tr v-for="(meta_item, meta_index) in field.meta">
+                                                                            <td v-html="$vaah.toLabel(meta_index)">
+                                                                            </td>
+                                                                            <td>
+                                                                                <div v-if="meta_index == 'is_hidden'">
+                                                                                    <b-checkbox v-model="field.meta[meta_index]">Is Hidden</b-checkbox>
+                                                                                </div>
+                                                                                <div v-else>
+                                                                                    <b-input v-model="field.meta[meta_index]"
+                                                                                             type="text"></b-input>
+                                                                                </div>
+
+                                                                            </td>
+                                                                        </tr>
+                                                                    </template>
+
+                                                                </table>
+
+
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </draggable>
+                                                <p v-if="item.fields.length === 0"
+                                                   class="has-text-centered has-text-weight-bold">
+                                                    DROP HERE
+                                                </p>
+                                            </div>
+
+
+                                        </div>
+
+
+                                    </div>
+
+
+
+
+                                    <!--/content-->
+
 
 
 
                                 </div>
 
-                            </draggable>
+                            </div>
+                            <div class="column is-4" >
+
+                                <div class="card">
+
+                                    <!--header-->
+                                    <header class="card-header">
+
+                                        <div class="card-header-title">
+                                            <span>Form Fields</span>
+
+                                        </div>
+
+
+                                    </header>
+                                    <!--/header-->
+
+                                    <!--content-->
+                                    <div class="card-content" style="max-height: 600px; overflow: auto;">
+
+
+
+                                        <div class="draggable" >
+                                            <draggable :list="page.assets.field_types"
+                                                       :clone="cloneField"
+                                                       :group="{name:'fields', pull:'clone', put:false}"
+                                            >
+
+                                                <div v-for="(field, index) in page.assets.field_types"
+                                                     :key="index">
+                                                    <b-field class="has-margin-bottom-5" expanded>
+                                                        <p class="control drag">
+                                                            <span class="button is-static">:::</span>
+                                                        </p>
+
+                                                        <p class="control drag">
+                                                            <span class="button is-static">{{field.name}}</span>
+                                                        </p>
+                                                    </b-field>
+
+                                                </div>
+
+                                            </draggable>
+                                        </div>
+
+                                    </div>
+                                    <!--/content-->
+
+
+
+
+
+                                </div>
+
+                            </div>
+
+
                         </div>
 
 
 
+                    </b-tab-item>
 
-                    </b-field>
+                    <b-tab-item label="Mail">
+                        <section>
+                            <div class="mt-5">
+                                <div class="block">
 
-                    <b-field label="New Status" :label-position="labelPosition">
-                        <b-input type="text" v-model="status"
-                                 placeholder="Type new status and press enter"
-                                 @keyup.enter.native="addStatus()"></b-input>
-                    </b-field>
+                                    <b-field label="To" :label-position="label_position">
+                                        <b-input v-model="item.mail_fields.to" placeholder="some@email.com" type="email"></b-input>
+                                    </b-field>
 
+                                    <b-field label="From" :label-position="label_position">
+                                        <b-input class="mr-3" name="name" v-model="item.mail_fields.from.name" placeholder="Name" expanded></b-input>
+                                        <b-input name="email" placeholder="some@email.com" v-model="item.mail_fields.from.email" type="email" expanded></b-input>
+                                    </b-field>
 
-                </div>
+                                    <b-field label="Subject" :label-position="label_position">
+                                        <b-input placeholder="Subject" v-model="item.mail_fields.subject"></b-input>
+                                    </b-field>
+
+                                    <b-field label="Additional Headers" :label-position="label_position">
+                                        <b-input v-model="item.mail_fields.additional_header" type="textarea"></b-input>
+                                    </b-field>
+
+                                    <b-field label="Message Body" :label-position="label_position">
+                                        <b-input v-model="item.mail_fields.message" type="textarea"></b-input>
+                                    </b-field>
+                                </div>
+                            </div>
+                        </section>
+                    </b-tab-item>
+
+                    <b-tab-item label="Messages">
+                        <section>
+                            <div class="mt-5">
+                                <div class="block">
+
+                                    <b-field label="Success" type="is-success" :label-position="label_position">
+                                        <b-input v-model="item.message_fields.success"></b-input>
+                                    </b-field>
+
+                                    <b-field label="Failure" type="is-danger" :label-position="label_position">
+                                        <b-input v-model="item.message_fields.failure"></b-input>
+                                    </b-field>
+
+                                    <b-field label="Terms" type="is-info" :label-position="label_position">
+                                        <b-input v-model="item.message_fields.term"></b-input>
+                                    </b-field>
+                                </div>
+                            </div>
+                        </section>
+                    </b-tab-item>
+
+                    <b-tab-item label="Additional Setting" disabled>
+                        Nunc nec velit nec libero vestibulum eleifend.
+                        Curabitur pulvinar congue luctus.
+                        Nullam hendrerit iaculis augue vitae ornare.
+                        Maecenas vehicula pulvinar tellus, id sodales felis lobortis eget.
+                    </b-tab-item>
+                </b-tabs>
             </div>
             <!--/content-->
 
@@ -197,5 +363,3 @@
 
     </div>
 </template>
-
-

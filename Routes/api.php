@@ -12,3 +12,6 @@ use Illuminate\Http\Request;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+
+Route::post( '/form/submit', 'Backend\BackendController@formSubmit' )
+    ->name( 'vh.backend.forms.submit' );

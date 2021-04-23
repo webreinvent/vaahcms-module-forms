@@ -112,7 +112,7 @@ class ContactFormField extends Model {
     {
 
         //delete content fields
-        self::where('vh_cms_form_field_id', $id)->forceDelete();
+        self::where('vh_form_contact_form_id', $id)->forceDelete();
 
         //delete group
         static::where('id', $id)->forceDelete();
@@ -126,56 +126,60 @@ class ContactFormField extends Model {
             static::deleteItem($id);
         }
 
-    }public static function syncWithFormFields(ContactForm $form, $fields_array)
-{
-
-    //delete form group fields which are just removed
-    $stored_group_fields = static::where('vh_form_contact_form_id', $form->id)
-        ->get()
-        ->pluck('id')
-        ->toArray();
-
-    $input_group_fields = collect($fields_array)->pluck('id')->toArray();
-    $fields_to_delete = array_diff($stored_group_fields, $input_group_fields);
-
-    if(count($fields_to_delete) > 0)
-    {
-        static::deleteItems($fields_to_delete);
     }
 
+    public static function syncWithFormFields(ContactForm $form, $fields_array){
 
-    if(count($fields_array) > 0 )
-    {
-        foreach ($fields_array as $f_index => $field)
+
+        //delete form group fields which are just removed
+        $stored_group_fields = static::where('vh_form_contact_form_id', $form->id)
+            ->get()
+            ->pluck('id')
+            ->toArray();
+
+        $input_group_fields = collect($fields_array)->pluck('id')->toArray();
+        $fields_to_delete = array_diff($stored_group_fields, $input_group_fields);
+
+        if(count($fields_to_delete) > 0)
         {
-            if(isset($field['id']))
-            {
-                $stored_field = static::find($field['id']);
-            } else{
-                $stored_field = new static();
-            }
+            static::deleteItems($fields_to_delete);
+        }
 
-            if(isset($field['type']) && isset($field['type']['slug']) )
+
+        if(count($fields_array) > 0 )
+        {
+            foreach ($fields_array as $f_index => $field)
             {
-                $type = FieldType::where('slug', $field['type']['slug'])->first();
-                if($type)
+                if(isset($field['id']))
                 {
-                    $field['vh_form_field_type_id'] = $type->id;
+                    $stored_field = static::find($field['id']);
+
+                } else{
+                    $stored_field = new static();
                 }
 
-                unset($field['type']);
+                if(isset($field['type']) && isset($field['type']['slug']) )
+                {
+                    $type = FormFieldType::where('slug', $field['type']['slug'])->first();
+                    if($type)
+                    {
+                        $field['vh_form_field_type_id'] = $type->id;
+                    }
+
+                    unset($field['type']);
+                }
+
+
+                $stored_field->fill($field);
+                $stored_field->sort = $f_index;
+                $stored_field->slug = $field['slug'];
+                $stored_field->vh_form_contact_form_id = $form->id;
+                $stored_field->save();
             }
-
-            $stored_field->fill($field);
-            $stored_field->sort = $f_index;
-            $stored_field->slug = Str::slug($field['name']);
-            $stored_field->vh_form_contact_form_id = $form->id;
-            $stored_field->save();
         }
+
+
     }
-
-
-}
     //-------------------------------------------------
 
     //-------------------------------------------------

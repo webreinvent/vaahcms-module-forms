@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
+use VaahCms\Themes\Forms\Mail\FormMail;
 
 class BackendController extends Controller
 {
@@ -27,6 +28,19 @@ class BackendController extends Controller
 
         return response()->json($response);
 
+    }
+
+    public function formSubmit(Request $request)
+    {
+        try{
+            \Mail::to(env('MAIL_FROM_ADDRESS'))->send(new FormMail($request));
+
+            return back()->with('success', 'Thanks for contacting us!');
+        }catch (\Exception $e){
+            $errors[]             = $e->getMessage();
+
+            return back()->with('failed', $errors)->withInput();
+        }
     }
 
 }

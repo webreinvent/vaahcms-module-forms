@@ -138,6 +138,7 @@ export default {
         permissions(state) {return state.permissions;},
         is_logged_in(state) {return state.is_logged_in;},
         query_string(state) {return state.query_string;},
+        active_item(state) {return state.active_item;},
     }
 
 }
