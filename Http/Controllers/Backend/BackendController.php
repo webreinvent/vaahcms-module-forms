@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use VaahCms\Modules\Forms\Mail\FormMail;
+use VaahCms\Modules\Forms\Models\ContactForm;
 
 class BackendController extends Controller
 {
@@ -32,8 +33,18 @@ class BackendController extends Controller
 
     public function formSubmit(Request $request)
     {
+
+        $form = ContactForm::where('id',$request->id)->first();
+
+        $to = env('MAIL_FROM_ADDRESS');
+
+        if($form && $form->mail_fields && $form->mail_fields->to){
+            $to = $form->mail_fields->to;
+        }
+
+
         try{
-            \Mail::to(env('MAIL_FROM_ADDRESS'))->send(new FormMail($request));
+            \Mail::to($to)->send(new FormMail($request));
 
             return back()->with('success', 'Thanks for contacting us!');
         }catch (\Exception $e){

@@ -172,9 +172,9 @@
                                                                 </p>
                                                                 <b-input v-model="field.name" expanded placeholder="Field Name">
                                                                 </b-input>
-                                                                <b-tooltip label="Copy Slug" type="is-dark">
+                                                                <b-tooltip label="Copy Name" type="is-dark">
                                                                     <p class="control">
-                                                                        <b-button @click="$vaah.copy(field.slug)"
+                                                                        <b-button @click="$vaah.copy(field.name)"
                                                                         >#{{field.id}}</b-button>
                                                                     </p>
                                                                 </b-tooltip>
