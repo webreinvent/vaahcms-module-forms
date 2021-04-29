@@ -227,8 +227,16 @@
                                                                             <td v-html="$vaah.toLabel(meta_index)">
                                                                             </td>
                                                                             <td>
-                                                                                <div v-if="meta_index == 'is_hidden'">
-                                                                                    <b-checkbox v-model="field.meta[meta_index]">Is Hidden</b-checkbox>
+                                                                                <div v-if="meta_index.includes('is_')">
+                                                                                    <b-checkbox v-model="field.meta[meta_index]">{{$vaah.toLabel(meta_index)}}</b-checkbox>
+                                                                                </div>
+                                                                                <div v-else-if="meta_index === 'option'">
+                                                                                    <b-taginput
+                                                                                            v-model="field.meta[meta_index]"
+                                                                                            ellipsis
+                                                                                            placeholder="Add a tag"
+                                                                                            aria-close-label="Delete this tag">
+                                                                                    </b-taginput>
                                                                                 </div>
                                                                                 <div v-else>
                                                                                     <b-input v-model="field.meta[meta_index]"

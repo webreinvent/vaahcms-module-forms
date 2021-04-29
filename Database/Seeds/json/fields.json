@@ -69,7 +69,11 @@
         "meta": {
             "container_start": "span",
             "container_end": "drop-down menu",
-            "is_hidden": true
+            "is_hidden": true,
+            "is_multiple": false,
+            "option": [
+                "Default"
+            ]
         }
     },
     {
@@ -87,7 +91,10 @@
         "meta": {
             "container_start": "span",
             "container_end": "radio buttons",
-            "is_hidden": true
+            "is_hidden": true,
+            "option": [
+                "Default"
+            ]
         }
     },
     {

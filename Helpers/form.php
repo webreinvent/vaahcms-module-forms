@@ -17,6 +17,8 @@
 
 //-----------------------------------------------------------------------------------
 
+use Illuminate\Support\Str;
+
 function vh_form($slug = null)
 {
     $form = \VaahCms\Modules\Forms\Models\ContactForm::where('slug',$slug)
@@ -44,9 +46,13 @@ function get_form_field(\VaahCms\Modules\Forms\Models\ContactForm $form)
 
     foreach ($form->fields as $field){
 
-        $value .= "<div class=\"field\">
-                      <label class='label'>".$field->name."</label>
-                      <div class=\"control\">";
+        $value .= "<div class=\"field\">";
+
+        if($field->type->slug !== "radio-buttons" && $field->type->slug !== "checkboxes"){
+            $value .= "<label class='label'>".$field->name."</label>";
+        }
+
+        $value .= "<div class=\"control\">";
 
 
 
@@ -95,45 +101,68 @@ function get_form_field(\VaahCms\Modules\Forms\Models\ContactForm $form)
 
             case 'drop-down-menu':
 
-                $value .= '<div class="select">
+                $value .= '<div class="select ';
+
+                if($field->meta->is_multiple){
+                    $value .= " is-multiple ";
+                }
+
+                $value .= '">
                               <select name="'.Illuminate\Support\Str::slug($field->name).'"';
 
                 if($field->is_required){
                     $value .= " required ";
                 }
 
-                $value .= '>
-                                <option value="">Select dropdown</option>
-                                <option value="ee">With options</option>
-                              </select>
+                if($field->meta->is_multiple){
+                    $value .= " multiple ";
+                }
+
+                $value .= '>';
+
+                if(!$field->meta->is_multiple){
+                    $value .= '<option value="">Select '.$field->name.'</option>';
+                }
+
+                foreach ($field->meta->option as $option){
+                    $value .= '<option value="'.$option.'">'.$option.'</option>';
+                }
+
+                $value .= '</select>
                             </div>';
 
                 break;
 
             case 'checkboxes':
                 $value .= '<label class="checkbox">
-                              <input type="checkbox" ';
+                              <input type="checkbox" name="'.Illuminate\Support\Str::slug($field->name).'"';
 
                 if($field->is_required){
                     $value .= " required ";
                 }
 
                 $value .= '>
-                              Remember me
+                              '.$field->name.'
                             </label>';
                 break;
 
             case 'radio-buttons':
-                $value .= '<div class="control">
-                              <label class="radio">
-                                <input type="radio" name="answer">
-                                Yes
-                              </label>
-                              <label class="radio">
-                                <input type="radio" name="answer">
-                                No
-                              </label>
-                            </div>';
+                $value .= '<div class="control">';
+
+                foreach ($field->meta->option as $option){
+                    $value .= '<label class="radio">
+                                <input type="radio"';
+
+                    if($field->is_required){
+                        $value .= " required ";
+                    }
+
+                    $value .= 'value="'.$option.'" name="'.$field->name.'">
+                                '.$option.'
+                              </label>';
+                }
+
+                $value .= '</div>';
                 break;
 
             default:
