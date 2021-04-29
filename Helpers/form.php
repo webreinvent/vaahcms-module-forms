@@ -48,7 +48,7 @@ function get_form_field(\VaahCms\Modules\Forms\Models\ContactForm $form)
 
         $value .= "<div class=\"field\">";
 
-        if($field->type->slug !== "radio-buttons" && $field->type->slug !== "checkboxes"){
+        if($field->type->slug !== "checkboxes"){
             $value .= "<label class='label'>".$field->name."</label>";
         }
 
