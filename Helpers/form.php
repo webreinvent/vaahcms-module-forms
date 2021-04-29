@@ -19,9 +19,9 @@
 
 function vh_form($slug = null)
 {
-
     $form = \VaahCms\Modules\Forms\Models\ContactForm::where('slug',$slug)
         ->where('is_published',1)
+        ->where('vh_theme_id',vh_get_theme_id())
         ->with(['fields'])->first();
 
     if(!$form){
@@ -38,7 +38,7 @@ function get_form_field(\VaahCms\Modules\Forms\Models\ContactForm $form)
         return false;
     }
 
-    $value = '<form action="'.url('/api/form/submit').'" method="post">'."\n";
+    $value = '<form action="'.url('/api/form/submit').'" method="'.$form->method_type.'">'."\n";
     $value .= '<input type="hidden" name="_token" value="'.csrf_token().'" />'."\n";
     $value .= '<input type="hidden" name="id" value="'.$form->id.'" />'."\n";
 
@@ -53,7 +53,7 @@ function get_form_field(\VaahCms\Modules\Forms\Models\ContactForm $form)
         switch($field->type->slug){
 
             case 'tel':
-                $value .= "<input class='input' type='number'  name='".$field->name."'";
+                $value .= "<input class='input' type='number'  name='".\Illuminate\Support\Str::slug($field->name)."'";
 
                 if($field->is_required){
                     $value .= " required ";
@@ -64,13 +64,23 @@ function get_form_field(\VaahCms\Modules\Forms\Models\ContactForm $form)
                 break;
 
             case 'textarea':
-                $value .= "<textarea class=\"textarea\" name='".$field->name."' placeholder='".$field->name."'></textarea>";
+                $value .= "<textarea class=\"textarea\" name='".\Illuminate\Support\Str::slug($field->name)."'";
+                if($field->is_required){
+                    $value .= " required ";
+                }
+                $value .= "placeholder='".$field->name."'></textarea>";
                 break;
 
             case 'file':
                 $value .= '<div class="file is-boxed">
                               <label class="file-label">
-                                <input class="file-input" type="'.$field->type->slug.'" name="'.$field->name.'">
+                                <input class="file-input"';
+
+                if($field->is_required){
+                    $value .= " required ";
+                }
+
+                $value .= 'type="'.$field->type->slug.'" name="'.\Illuminate\Support\Str::slug($field->name).'">
                                 <span class="file-cta">
                                   <span class="file-icon">
                                     <i class="fas fa-upload"></i>
@@ -86,9 +96,15 @@ function get_form_field(\VaahCms\Modules\Forms\Models\ContactForm $form)
             case 'drop-down-menu':
 
                 $value .= '<div class="select">
-                              <select>
-                                <option>Select dropdown</option>
-                                <option>With options</option>
+                              <select name="'.Illuminate\Support\Str::slug($field->name).'"';
+
+                if($field->is_required){
+                    $value .= " required ";
+                }
+
+                $value .= '>
+                                <option value="">Select dropdown</option>
+                                <option value="ee">With options</option>
                               </select>
                             </div>';
 
@@ -96,7 +112,13 @@ function get_form_field(\VaahCms\Modules\Forms\Models\ContactForm $form)
 
             case 'checkboxes':
                 $value .= '<label class="checkbox">
-                              <input type="checkbox">
+                              <input type="checkbox" ';
+
+                if($field->is_required){
+                    $value .= " required ";
+                }
+
+                $value .= '>
                               Remember me
                             </label>';
                 break;
@@ -115,7 +137,7 @@ function get_form_field(\VaahCms\Modules\Forms\Models\ContactForm $form)
                 break;
 
             default:
-                $value .= "<input class='input' type='".$field->type->slug. "' name='".$field->name."'";
+                $value .= "<input class='input' type='".$field->type->slug. "' name='".\Illuminate\Support\Str::slug($field->name)."'";
                 if($field->is_required){
                     $value .= " required ";
                 }

@@ -214,9 +214,15 @@
 
                                                         User with the following details has submit a form:<br/><br/>
 {{--                                                        Name     : {{ $request->has('name')     ? $request->name : 'NA'  }}<br/>--}}
-                                                        Email    : {{ $request->has('email')    ? $request->email : 'NA'}}<br/>
-                                                        Subject : {{ $request->has('subject') ? $request->subject : 'NA'}}<br/>
-                                                        Message  : {{ $request->has('message')  ? $request->message : 'NA'}}<br/>
+                                                        @php
+                                                            unset($request['_token']);
+                                                            unset($request['id']);
+                                                        @endphp
+                                                        @foreach($request->all() as $key => $value)
+                                                            {{ \Illuminate\Support\Str::title(str_replace('-', ' ', $key)) }}    : {{ $value ? $value : 'N/A' }}<br/>
+                                                        @endforeach
+
+
                                                     </p>
                                                     <br>
 

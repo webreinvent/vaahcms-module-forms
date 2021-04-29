@@ -31,6 +31,9 @@ class ContactForm extends Model {
         'name',
         'slug',
         'is_published',
+        'is_use_default_url',
+        'action_url',
+        'method_type',
         'meta',
         'mail_fields',
         'message_fields',
@@ -70,6 +73,15 @@ class ContactForm extends Model {
             return json_decode($value);
         }
         return null;
+    }
+    //-------------------------------------------------
+    public function getIsUseDefaultUrlAttribute($value)
+    {
+        if($value == 1)
+        {
+            return true;
+        }
+        return false;
     }
     //-------------------------------------------------
     public function setMailFieldsAttribute($value)
@@ -259,6 +271,7 @@ class ContactForm extends Model {
             'slug' => 'required',
             'is_published' => 'required',
             'vh_theme_id' => 'required',
+            'method_type' => 'required',
             'fields' => 'required|array',
             'fields.*.name' => 'required|max:100',
         );

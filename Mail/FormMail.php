@@ -1,7 +1,7 @@
 <?php
 
 
-namespace VaahCms\Themes\Forms\Mail;
+namespace  VaahCms\Modules\Forms\Mail;
 
 
 use Illuminate\Bus\Queueable;
@@ -33,8 +33,6 @@ class FormMail extends Mailable
      */
     public function build()
     {
-
-        dd(154);
         return $this->view('forms::backend.emails.form');
     }
 

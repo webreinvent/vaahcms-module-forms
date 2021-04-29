@@ -169,7 +169,7 @@ export default {
                 {
                     this.saveAndClose()
                 }else{
-                    this.$root.$emit('eReloadItem');
+                    this.getItem();
                 }
 
                 this.reloadRootAssets();

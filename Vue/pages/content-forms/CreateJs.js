@@ -19,6 +19,7 @@ export default {
         return {
             namespace: namespace,
             is_content_loading: false,
+            copyright_text_custom: false,
             is_btn_loading: null,
             label_position: 'on-border',
             params: {},

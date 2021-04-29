@@ -22,6 +22,9 @@ class VhFormContactFormsTable extends Migration
             $table->string('name')->nullable()->index();
             $table->string('slug')->nullable()->index();
             $table->boolean('is_published')->nullable()->index();
+            $table->boolean('is_use_default_url')->nullable()->index();
+            $table->string('action_url')->nullable();
+            $table->string('method_type')->nullable()->index();
 
             $table->text('meta')->nullable();
             $table->text('mail_fields')->nullable();

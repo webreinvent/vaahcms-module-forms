@@ -42,6 +42,9 @@ export default {
             name: null,
             slug: null,
             is_published: null,
+            action_url: null,
+            method_type: null,
+            is_use_default_url: true,
             vh_theme_id: "",
             fields:[],
             mail_fields:{

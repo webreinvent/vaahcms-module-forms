@@ -83,6 +83,47 @@
                         <span>No</span>
                     </b-radio-button>
                 </b-field>
+                <b-field  expanded
+                          grouped
+                          label="Action Url"
+                          :label-position="label_position">
+
+                    <b-field expanded>
+                        <b-radio-button v-model="item.is_use_default_url"
+                                        type="is-success"
+                                        :native-value=true >
+                            <span>Use Default Url</span>
+                        </b-radio-button>
+                        <b-radio-button
+                                v-model="item.is_use_default_url"
+                                :native-value=false>
+                            <span>Custom</span>
+                        </b-radio-button>
+
+                        <b-input v-if="!item.is_use_default_url"
+                                 v-model="item.action_url"
+                                 expanded type="text"
+                                 placeholder="Type Action Text">
+                        </b-input>
+                    </b-field>
+
+
+                </b-field>
+
+                <b-field label="Method Type"
+                         :label-position="label_position">
+
+                    <b-select v-model="item.method_type">
+                        <option value=null>Select a Method Type</option>
+                        <option value="POST">POST</option>
+                        <option value="GET">GET</option>
+                        <option value="DELETE">DELETE</option>
+                        <option value="PUT">PUT</option>
+
+                    </b-select>
+
+
+                </b-field>
 
                 <b-tabs type="is-boxed">
                     <b-tab-item label="Form">
