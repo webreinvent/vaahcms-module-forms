@@ -40,7 +40,7 @@ function get_form_field(\VaahCms\Modules\Forms\Models\ContactForm $form)
         return false;
     }
 
-    $url = url('/api/form/submit');
+    $url = url('/form/submit');
 
     if(!$form->is_use_default_url){
         $url = $form->action_url;
@@ -65,7 +65,8 @@ function get_form_field(\VaahCms\Modules\Forms\Models\ContactForm $form)
         switch($field->type->slug){
 
             case 'tel':
-                $value .= "<input class='input' type='number'  name='".\Illuminate\Support\Str::slug($field->name)."'";
+                $value .= "<input class='input' type='number' value='".old(\Illuminate\Support\Str::slug($field->name)). "'
+                 name='".\Illuminate\Support\Str::slug($field->name)."'";
 
                 if($field->is_required){
                     $value .= " required ";
@@ -76,7 +77,8 @@ function get_form_field(\VaahCms\Modules\Forms\Models\ContactForm $form)
                 break;
 
             case 'textarea':
-                $value .= "<textarea class=\"textarea\" name='".\Illuminate\Support\Str::slug($field->name)."'";
+                $value .= "<textarea class=\"textarea\" value='".old(\Illuminate\Support\Str::slug($field->name)). "'
+                 name='".\Illuminate\Support\Str::slug($field->name)."'";
                 if($field->is_required){
                     $value .= " required ";
                 }
@@ -114,7 +116,7 @@ function get_form_field(\VaahCms\Modules\Forms\Models\ContactForm $form)
                 }
 
                 $value .= '">
-                              <select name="'.Illuminate\Support\Str::slug($field->name).'"';
+                              <select value="'.old(\Illuminate\Support\Str::slug($field->name)). '" name="'.Illuminate\Support\Str::slug($field->name).'"';
 
                 if($field->is_required){
                     $value .= " required ";
@@ -141,7 +143,8 @@ function get_form_field(\VaahCms\Modules\Forms\Models\ContactForm $form)
 
             case 'checkboxes':
                 $value .= '<label class="checkbox">
-                              <input type="checkbox" name="'.Illuminate\Support\Str::slug($field->name).'"';
+                              <input type="checkbox" value="'.old(\Illuminate\Support\Str::slug($field->name)). '"
+                               name="'.Illuminate\Support\Str::slug($field->name).'"';
 
                 if($field->is_required){
                     $value .= " required ";
@@ -157,7 +160,7 @@ function get_form_field(\VaahCms\Modules\Forms\Models\ContactForm $form)
 
                 foreach ($field->meta->option as $option){
                     $value .= '<label class="radio">
-                                <input type="radio"';
+                                <input type="radio" value="'.old(\Illuminate\Support\Str::slug($field->name)). '" ';
 
                     if($field->is_required){
                         $value .= " required ";
@@ -172,7 +175,9 @@ function get_form_field(\VaahCms\Modules\Forms\Models\ContactForm $form)
                 break;
 
             default:
-                $value .= "<input class='input' type='".$field->type->slug. "' name='".\Illuminate\Support\Str::slug($field->name)."'";
+                $value .= "<input class='input' type='".$field->type->slug. "' 
+                value='".old(\Illuminate\Support\Str::slug($field->name)). "' 
+                name='".\Illuminate\Support\Str::slug($field->name)."'";
                 if($field->is_required){
                     $value .= " required ";
                 }

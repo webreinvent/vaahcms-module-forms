@@ -13,5 +13,4 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::post( '/form/submit', 'Backend\BackendController@formSubmit' )
-    ->name( 'vh.backend.forms.submit' );
+
