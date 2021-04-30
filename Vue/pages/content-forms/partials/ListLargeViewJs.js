@@ -1,3 +1,4 @@
+
 let namespace = 'content_forms';
 export default {
     computed: {
@@ -105,7 +106,18 @@ export default {
             this.update('active_item', item);
             this.$router.push({name:'content.forms.content.structure', params:{id:item.id}});
 
-        }
+        },
+        //---------------------------------------------------------------------
+        copyCode: function (slug)
+        {
+            let code = "";
+            if(slug)
+            {
+                code = " {!! vh_form('"+slug+"') !!}";
+            }
+
+            return code;
+        },
         //---------------------------------------------------------------------
         //---------------------------------------------------------------------
         //---------------------------------------------------------------------
