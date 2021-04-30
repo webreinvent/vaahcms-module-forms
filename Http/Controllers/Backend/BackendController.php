@@ -39,21 +39,39 @@ class BackendController extends Controller
         $to = env('MAIL_FROM_ADDRESS');
 
         if($form && $form->mail_fields && $form->mail_fields->to){
-            $to = $form->mail_fields->to;
+            $to = self::translateDynamicStringOfForms($form->mail_fields->to,$request->all());
         }
 
-
         try{
-            \Mail::to($to)->send(new FormMail($request));
+            \Mail::to($to)->send(new FormMail($request, $form));
 
-            return back()->with('success', 'Thanks for contacting us!');
+            return back()->with('success', $form->message_fields->success);
         }catch (\Exception $e){
+            $errors[]             = $form->message_fields->failure;
             $errors[]             = $e->getMessage();
 
-            dd($e->getMessage());
+            dd($errors);
 
             return back()->with('failed', $errors)->withInput();
         }
+    }
+
+    public static function translateDynamicStringOfForms($string, $request)
+    {
+
+        $pair = $request;
+        $codes = $pair;
+        $pattern = '#!%s!#';
+
+        $map = array();
+        foreach($codes as $var => $value) {
+            $map[sprintf($pattern, $var)] = $value;
+        }
+
+        $string = strtr($string, $map);
+
+        return $string;
+
     }
 
 }

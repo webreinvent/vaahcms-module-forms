@@ -206,28 +206,44 @@
                                         <tr style="width:100%;" class="smallFull">
                                             <td class="text_padding_mobile_0 cellFull  noMoreHeight"
                                                 style="width:100%;border-collapse: collapse;text-align:center;height:47px;vertical-align:top">
+
+
+
+
+
                                                 <div style="padding:30px;font-size: 15px;font-family: 'Verdana'; line-height:25px;color: rgb(49, 49, 49);text-align: left;display: block !important;">
-                                                    <p style="margin:0 0 10px;">
-                                                        Hello Admin,
-                                                    </p>
-                                                    <p style="margin:0px;">
 
-                                                        User with the following details has submit a form:<br/><br/>
-{{--                                                        Name     : {{ $request->has('name')     ? $request->name : 'NA'  }}<br/>--}}
-                                                        @php
-                                                            unset($request['_token']);
-                                                            unset($request['id']);
-                                                        @endphp
-                                                        @foreach($request->all() as $key => $value)
-                                                            {{ \Illuminate\Support\Str::title(str_replace('-', ' ', $key)) }}    : {{ $value ? $value : 'N/A' }}<br/>
-                                                        @endforeach
+                                                    @if($form && $form->mail_fields && $form->mail_fields->message)
+
+                                                        {!! \VaahCms\Modules\Forms\Http\Controllers\Backend\BackendController::translateDynamicStringOfForms($form->mail_fields->message,$request->all()) !!}
+
+                                                    @else
+
+                                                        <p style="margin:0 0 10px;">
+                                                            Hello Admin,
+                                                        </p>
+                                                        <p style="margin:0px;">
+
+                                                            User with the following details has submit a form:<br/><br/>
+                                                            {{--                                                        Name     : {{ $request->has('name')     ? $request->name : 'NA'  }}<br/>--}}
+                                                            @php
+
+                                                                unset($request['_token']);
+                                                                unset($request['id']);
+                                                            @endphp
+                                                            @foreach($request->all() as $key => $value)
+                                                                {{ \Illuminate\Support\Str::title(str_replace('-', ' ', $key)) }}    : {{ $value ? $value : 'N/A' }}<br/>
+                                                            @endforeach
 
 
-                                                    </p>
-                                                    <br>
+                                                        </p>
+                                                        <br>
 
-                                                    <p style="width:100%;text-align:center;"><b>******Please do not reply to this email.*******</b></p>
-                                                </div>
+                                                        <p style="width:100%;text-align:center;"><b>******Please do not reply to this email.*******</b></p>
+
+                                                    @endif
+
+                                                  </div>
                                             </td>
                                         </tr>
                                         </tbody>

@@ -40,7 +40,13 @@ function get_form_field(\VaahCms\Modules\Forms\Models\ContactForm $form)
         return false;
     }
 
-    $value = '<form action="'.url('/api/form/submit').'" method="'.$form->method_type.'">'."\n";
+    $url = url('/api/form/submit');
+
+    if(!$form->is_use_default_url){
+        $url = $form->action_url;
+    }
+
+    $value = '<form action="'.$url.'" method="'.$form->method_type.'">'."\n";
     $value .= '<input type="hidden" name="_token" value="'.csrf_token().'" />'."\n";
     $value .= '<input type="hidden" name="id" value="'.$form->id.'" />'."\n";
 
@@ -157,7 +163,7 @@ function get_form_field(\VaahCms\Modules\Forms\Models\ContactForm $form)
                         $value .= " required ";
                     }
 
-                    $value .= 'value="'.$option.'" name="'.$field->name.'">
+                    $value .= 'value="'.$option.'" name="'.\Illuminate\Support\Str::slug($field->name).'">
                                 '.$option.'
                               </label>';
                 }

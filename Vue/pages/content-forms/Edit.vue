@@ -174,7 +174,7 @@
                                                                 </b-input>
                                                                 <b-tooltip label="Copy Name" type="is-dark">
                                                                     <p class="control">
-                                                                        <b-button @click="$vaah.copy(field.name)"
+                                                                        <b-button @click="$vaah.copy('#!'+$vaah.strToSlug(field.name)+'!#')"
                                                                         >#{{field.id}}</b-button>
                                                                     </p>
                                                                 </b-tooltip>
