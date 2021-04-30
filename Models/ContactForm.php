@@ -190,6 +190,9 @@ class ContactForm extends Model {
         $fillable['slug'] = $inputs['slug'];
         $fillable['vh_theme_id'] = $inputs['vh_theme_id'];
         $fillable['is_published'] = $inputs['is_published'];
+        $fillable['action_url'] = $inputs['action_url'];
+        $fillable['method_type'] = $inputs['method_type'];
+        $fillable['is_use_default_url'] = $inputs['is_use_default_url'];
         $fillable['mail_fields'] = $inputs['mail_fields'];
         $fillable['message_fields'] = $inputs['message_fields'];
 
@@ -267,7 +270,7 @@ class ContactForm extends Model {
     public static function validation($request)
     {
         $rules = array(
-            'name' => 'required|max:255',
+            'name' => 'required|unique:vh_form_contact_forms|max:255',
             'slug' => 'required',
             'is_published' => 'required',
             'vh_theme_id' => 'required',

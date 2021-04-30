@@ -43,7 +43,7 @@ export default {
             slug: null,
             is_published: null,
             action_url: null,
-            method_type: null,
+            method_type: 'POST',
             is_use_default_url: true,
             vh_theme_id: "",
             fields:[],

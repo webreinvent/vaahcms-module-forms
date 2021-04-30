@@ -36,11 +36,6 @@ class BackendController extends Controller
 
         $form = ContactForm::where('id',$request->id)->first();
 
-        $to = env('MAIL_FROM_ADDRESS');
-
-        if($form && $form->mail_fields && $form->mail_fields->to){
-            $to = self::translateDynamicStringOfForms($form->mail_fields->to,$request->all());
-        }
 
         try{
             \Mail::to($to)->send(new FormMail($request, $form));
@@ -50,7 +45,7 @@ class BackendController extends Controller
             $errors[]             = $form->message_fields->failure;
             $errors[]             = $e->getMessage();
 
-            return back()->with('failed', $errors)->withInput();
+            return redirect()->back()->withErrors($errors)->withInput();
         }
     }
 
