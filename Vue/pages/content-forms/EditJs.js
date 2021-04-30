@@ -1,5 +1,6 @@
 import GlobalComponents from '../../vaahvue/helpers/GlobalComponents'
 import draggable from 'vuedraggable';
+import ContentFieldAll from '../../vaahvue/reusable/content-fields/All'
 
 let namespace = 'content_forms';
 
@@ -13,6 +14,7 @@ export default {
     },
     components:{
         ...GlobalComponents,
+        ContentFieldAll,
         draggable
 
     },

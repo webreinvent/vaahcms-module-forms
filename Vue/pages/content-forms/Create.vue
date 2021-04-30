@@ -352,12 +352,17 @@
                                         <b-input placeholder="Subject" v-model="new_item.mail_fields.subject"></b-input>
                                     </b-field>
 
-                                    <b-field label="Additional Headers" :label-position="label_position">
-                                        <b-input v-model="new_item.mail_fields.additional_header" type="textarea"></b-input>
-                                    </b-field>
-
                                     <b-field label="Message Body" :label-position="label_position">
-                                        <b-input v-model="new_item.mail_fields.message" type="textarea"></b-input>
+                                        <ContentFieldAll field_slug="editor"
+                                                         label="Message"
+                                                         placeholder="message"
+                                                         :labelPosition="label_position"
+                                                         v-model="new_item.mail_fields.message"
+                                                         @onInput=""
+                                                         @onChange=""
+                                                         @onBlur=""
+                                                         @onFocus="">
+                                        </ContentFieldAll>
                                     </b-field>
                                 </div>
                             </div>

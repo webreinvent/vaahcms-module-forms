@@ -54,7 +54,6 @@ export default {
                     email:null
                 },
                 subject:null,
-                additional_header:null,
                 message:null
             },
             message_fields:{}
