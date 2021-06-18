@@ -118,20 +118,20 @@ class ContactFormController extends Controller
             //------------------------------------
             case 'bulk-trash':
 
-                $response = ContentType::bulkTrash($request);
+                $response = ContactForm::bulkTrash($request);
 
                 break;
             //------------------------------------
             case 'bulk-restore':
 
-                $response = ContentType::bulkRestore($request);
+                $response = ContactForm::bulkRestore($request);
 
                 break;
 
             //------------------------------------
             case 'bulk-delete':
 
-                $response = ContentType::bulkDelete($request);
+                $response = ContactForm::bulkDelete($request);
 
                 break;
 

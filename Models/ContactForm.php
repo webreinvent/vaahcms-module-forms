@@ -184,6 +184,30 @@ class ContactForm extends Model {
 
         $inputs = $request->all();
 
+
+        // check if name exist
+        $item = self::where('name',$inputs['name'])
+            ->withTrashed()->first();
+
+        if($item)
+        {
+            $response['status'] = 'failed';
+            $response['errors'][] = "This name is already exist.";
+            return $response;
+        }
+
+        // check if slug exist
+        $item = self::where('slug',$inputs['slug'])
+            ->withTrashed()->first();
+
+        if($item)
+        {
+            $response['status'] = 'failed';
+            $response['errors'][] = "This slug is already exist.";
+            return $response;
+        }
+
+
         $item = new static();
 
         $fillable['name'] = $inputs['name'];
@@ -270,7 +294,7 @@ class ContactForm extends Model {
     public static function validation($request)
     {
         $rules = array(
-            'name' => 'required|unique:vh_form_contact_forms|max:255',
+            'name' => 'required|max:255',
             'slug' => 'required',
             'is_published' => 'required',
             'vh_theme_id' => 'required',
@@ -372,18 +396,34 @@ class ContactForm extends Model {
     public static function postStore($request,$id)
     {
 
+
+
         $validation = static::validation($request);
         if(isset($validation['status']) && $validation['status'] == 'failed')
         {
             return $validation;
         }
 
-        $name_exist = static::where('id','!=',$request['id'])->where('name',$request['name'])->first();
+        // check if name exist
+        $user = self::where('id','!=',$request['id'])
+            ->where('name',$request['name'])->withTrashed()->first();
 
-        if($name_exist)
+        if($user)
         {
             $response['status'] = 'failed';
             $response['errors'][] = "This name is already exist.";
+            return $response;
+        }
+
+
+        // check if slug exist
+        $user = self::where('id','!=',$request['id'])
+            ->where('slug',$request['slug'])->withTrashed()->first();
+
+        if($user)
+        {
+            $response['status'] = 'failed';
+            $response['errors'][] = "This slug is already exist.";
             return $response;
         }
 

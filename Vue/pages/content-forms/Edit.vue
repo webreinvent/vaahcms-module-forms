@@ -8,9 +8,8 @@
             <header class="card-header">
 
                 <div class="card-header-title">
-                    <span>Create New Form</span>
+                    <span>{{title}}</span>
                 </div>
-
 
                 <div class="card-header-buttons">
 

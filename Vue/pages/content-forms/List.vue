@@ -15,7 +15,7 @@
                 <div class="card-header">
 
                     <div class="card-header-title">
-                        Content Forms
+                        Forms
                     </div>
 
                     <div class="card-header-buttons">
@@ -54,7 +54,7 @@
 
                             <!--left-->
                             <div class="level-left" >
-                                <!--<div  class="level-item" >
+                                <div  class="level-item" >
                                     <b-field >
 
                                         <b-select placeholder="- Bulk Actions -"
@@ -92,7 +92,7 @@
                                         </p>
 
                                     </b-field>
-                                </div>-->
+                                </div>
                             </div>
                             <!--/left-->
 
