@@ -51,7 +51,7 @@ function get_form_field(\VaahCms\Modules\Forms\Models\ContactForm $form)
 
     }
 
-    $value = '<form action="'.$url.'" method="'.$form->method_type.'">'."\n";
+    $value = '<form enctype="multipart/form-data" action="'.$url.'" method="'.$form->method_type.'">'."\n";
     $value .= '<input type="hidden" name="_token" value="'.csrf_token().'" />'."\n";
     $value .= '<input type="hidden" name="id" value="'.$form->id.'" />'."\n";
 

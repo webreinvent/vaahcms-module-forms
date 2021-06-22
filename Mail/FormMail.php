@@ -18,16 +18,18 @@ class FormMail extends Mailable
 
     public $request;
     public $form;
+    public $files;
 
     /**
      * Create a new message instance.
      *
      * @param $request
      */
-    public function __construct($request, ContactForm $form)
+    public function __construct($request, ContactForm $form, $attachments)
     {
         $this->request = $request;
         $this->form = $form;
+        $this->files = $attachments;
     }
 
     /**
@@ -37,7 +39,6 @@ class FormMail extends Mailable
      */
     public function build()
     {
-
         if($this->form && $this->form->mail_fields){
             $from_name = env('APP_NAME');
 
@@ -57,6 +58,15 @@ class FormMail extends Mailable
                 $this->subject($subject);
             }
         }
+
+        foreach ($this->files as $attachment){
+            $this->attach($attachment['file'],[
+                'as' => $attachment['name'], // If you want you can chnage original name to custom name
+                'mime' => $attachment['mime_type']
+            ]);
+        }
+
+
 
         return $this->view('forms::backend.emails.form');
     }
