@@ -3,7 +3,7 @@
 
 
     <div class="column is-8" v-if="page.assets && item">
-        
+
         <div class="card">
 
             <!--header-->
@@ -88,11 +88,23 @@
                             <span>Custom</span>
                         </b-radio-button>
 
-                        <b-input v-if="!item.is_use_default_url"
-                                 v-model="item.action_url"
-                                 expanded type="text"
-                                 placeholder="Type Action Text">
-                        </b-input>
+                        <b-select v-if="!item.is_use_default_url"
+                                  v-model="url_type">
+                            <option value="internal">Internal</option>
+                            <option value="external">External</option>
+                        </b-select>
+                    </b-field>
+
+                    <b-field v-if="!item.is_use_default_url">
+                        <p class="control"
+                           :style="[url_type === 'external' ? {'display': 'none'} : {'display': 'block'}]">
+                            <span class="button is-static">{{page.base_url}}</span>
+                        </p>
+                        <b-input  v-model="item.action_url"
+                                  type="text"
+                                  placeholder="Enter Url" expanded></b-input>
+
+
                     </b-field>
 
 

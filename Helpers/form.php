@@ -42,7 +42,13 @@ function get_form_field(\VaahCms\Modules\Forms\Models\ContactForm $form)
     $url = url('/form/submit');
 
     if(!$form->is_use_default_url){
-        $url = $form->action_url;
+        if(strpos($form->action_url, 'https://') !== false
+            || strpos($form->action_url, 'http://') !== false){
+            $url = $form->action_url;
+        }else{
+            $url = url('/').$form->action_url;
+        }
+
     }
 
     $value = '<form action="'.$url.'" method="'.$form->method_type.'">'."\n";

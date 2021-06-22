@@ -26,6 +26,7 @@ export default {
             is_btn_loading: null,
             label_position: 'on-border',
             params: {},
+            url_type: 'internal',
             local_action: null,
             title: null,
             edit_status_index: null,
@@ -141,6 +142,11 @@ export default {
             {
                 console.log('working');
                 this.title = data.name;
+
+                if(data.action_url.includes('https://') || data.action_url.includes('http://')){
+                    this.url_type = 'external';
+                }
+
                 this.update('active_item', data);
             } else
             {
