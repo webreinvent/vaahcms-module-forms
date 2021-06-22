@@ -88,11 +88,25 @@
                             <span>Custom</span>
                         </b-radio-button>
 
-                        <b-input v-if="!new_item.is_use_default_url"
-                                 v-model="new_item.action_url"
-                                 expanded type="text"
-                                 placeholder="Type Action Text">
-                        </b-input>
+                        <b-select v-if="!new_item.is_use_default_url"
+                                  v-model="url_type">
+                            <option value="internal">Internal</option>
+                            <option value="external">External</option>
+                        </b-select>
+
+
+                    </b-field>
+
+                    <b-field v-if="!new_item.is_use_default_url">
+                        <p class="control"
+                           :style="[url_type === 'external' ? {'display': 'none'} : {'display': 'block'}]">
+                            <span class="button is-static">{{page.base_url}}</span>
+                        </p>
+                        <b-input  v-model="new_item.action_url"
+                                  type="text"
+                                  placeholder="Enter Url" expanded></b-input>
+
+
                     </b-field>
 
 

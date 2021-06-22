@@ -26,6 +26,7 @@ export default {
             label_position: 'on-border',
             params: {},
             local_action: null,
+            url_type: 'internal',
             title: null,
             new_status: null,
             disable_status_editing: true,
