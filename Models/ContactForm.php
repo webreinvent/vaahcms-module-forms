@@ -3,8 +3,6 @@
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Str;
-use WebReinvent\VaahCms\Entities\Theme;
-use WebReinvent\VaahCms\Entities\ThemeTemplate;
 use WebReinvent\VaahCms\Entities\User;
 use WebReinvent\VaahCms\Traits\CrudWithUuidObservantTrait;
 
@@ -158,13 +156,6 @@ class ContactForm extends Model {
         )->select('id', 'uuid', 'first_name', 'last_name', 'email');
     }
     //-------------------------------------------------
-    public function theme()
-    {
-        return $this->belongsTo(Theme::class,
-            'vh_theme_id', 'id'
-        );
-    }
-    //-------------------------------------------------
     public function fields()
     {
         return $this->hasMany(ContactFormField::class,
@@ -271,7 +262,7 @@ class ContactForm extends Model {
         }
 
 
-        $data['list'] = $list->with('theme')->paginate(config('vaahcms.per_page'));
+        $data['list'] = $list->paginate(config('vaahcms.per_page'));
 
 /*
         $status = ContentType::where('id', $request->content_type->id);
@@ -321,7 +312,7 @@ class ContactForm extends Model {
     {
 
         $item = static::where('id', $id)
-            ->with(['theme', 'createdByUser', 'updatedByUser', 'deletedByUser'])
+            ->with(['createdByUser', 'updatedByUser', 'deletedByUser'])
             ->with(['fields' => function($f){
                 $f->orderBy('sort', 'asc')->with(['type']);
             }])

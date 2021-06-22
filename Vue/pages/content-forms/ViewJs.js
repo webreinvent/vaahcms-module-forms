@@ -1,4 +1,5 @@
 import GlobalComponents from '../../vaahvue/helpers/GlobalComponents'
+import ButtonMeta from '../../vaahvue/reusable/ButtonMeta'
 import TableTrView from '../../vaahvue/reusable/TableTrView'
 import TableTrActedBy from '../../vaahvue/reusable/TableTrActedBy'
 import TableTrStatus from '../../vaahvue/reusable/TableTrStatus'
@@ -15,6 +16,7 @@ export default {
     },
     components:{
         ...GlobalComponents,
+        ButtonMeta,
         TableTrView,
         TableTrStatus,
         TableTrActedBy,
@@ -87,11 +89,6 @@ export default {
 
             if(data && data)
             {
-                if(data.is_active == 1){
-                    data.is_active = 'Yes';
-                }else{
-                    data.is_active = 'No';
-                }
                 this.update('active_item', data);
             } else
             {

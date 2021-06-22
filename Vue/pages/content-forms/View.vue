@@ -135,7 +135,28 @@
                                     </template>
 
                                     <template v-else-if="label == 'created_by_user'
-                                      || label == 'updated_by_user' || label == 'deleted_by_user'">
+                                      || label == 'updated_by_user' || label == 'deleted_by_user'
+                                      || label == 'fields'">
+
+                                    </template>
+
+                                    <template v-else-if="label == 'mail_fields'">
+                                        <tr>
+                                            <th align="right">{{$vaah.toLabel(label)}}</th>
+                                            <td colspan="2">
+                                                <ButtonMeta dusk="action-view_payload" :value="value"/>
+                                            </td>
+                                        </tr>
+
+                                    </template>
+
+                                    <template v-else-if="label == 'message_fields'">
+                                        <tr>
+                                            <th align="right">{{$vaah.toLabel(label)}}</th>
+                                            <td colspan="2">
+                                                <ButtonMeta dusk="action-view_payload" :value="value"/>
+                                            </td>
+                                        </tr>
 
                                     </template>
 
