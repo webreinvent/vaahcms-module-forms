@@ -349,12 +349,20 @@
                                 <div class="block">
 
                                     <b-field label="To" :label-position="label_position">
-                                        <b-input v-model="new_item.mail_fields.to" placeholder="some@email.com" type="email"></b-input>
+                                        <b-input v-model="new_item.mail_fields.to"
+                                                 placeholder="some@email.com" type="email"></b-input>
                                     </b-field>
 
                                     <b-field label="From" :label-position="label_position">
-                                        <b-input class="mr-3" name="name" v-model="new_item.mail_fields.from.name" placeholder="Name" expanded></b-input>
-                                        <b-input name="email" placeholder="some@email.com" v-model="new_item.mail_fields.from.email" type="email" expanded></b-input>
+                                        <b-input class="mr-3" name="name"
+                                                 v-model="new_item.mail_fields.from.name"
+                                                 placeholder="Name" expanded>
+
+                                        </b-input>
+                                        <b-input name="email" placeholder="some@email.com"
+                                                 v-model="new_item.mail_fields.from.email" type="email" expanded>
+
+                                        </b-input>
                                     </b-field>
 
                                     <b-field label="Subject" :label-position="label_position">
@@ -376,7 +384,7 @@
                         </section>
                     </b-tab-item>
 
-                    <b-tab-item label="Messages">
+                    <b-tab-item label="Additional Setting">
                         <section>
                             <div class="mt-5">
                                 <div class="block">
@@ -395,13 +403,6 @@
                                 </div>
                             </div>
                         </section>
-                    </b-tab-item>
-
-                    <b-tab-item label="Additional Setting" disabled>
-                        Nunc nec velit nec libero vestibulum eleifend.
-                        Curabitur pulvinar congue luctus.
-                        Nullam hendrerit iaculis augue vitae ornare.
-                        Maecenas vehicula pulvinar tellus, id sodales felis lobortis eget.
                     </b-tab-item>
                 </b-tabs>
             </div>

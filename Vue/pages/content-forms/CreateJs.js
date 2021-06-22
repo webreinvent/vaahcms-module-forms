@@ -46,6 +46,7 @@ export default {
                 if(new_val)
                 {
                     this.updateMessages();
+                    this.setMailCredential();
                 }
 
             }
@@ -114,6 +115,17 @@ export default {
         //---------------------------------------------------------------------
         async getAssets() {
             await this.$store.dispatch(namespace+'/getAssets');
+        },
+
+        //---------------------------------------------------------------------
+        setMailCredential: function()
+        {
+            if(this.page.assets && this.page.assets.mail){
+                this.new_item.mail_fields.to = this.page.assets.mail.address;
+                this.new_item.mail_fields.from.email = this.page.assets.mail.address;
+                this.new_item.mail_fields.from.name = this.page.assets.mail.name;
+            }
+            this.update('new_item', this.new_item);
         },
 
         //---------------------------------------------------------------------

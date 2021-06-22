@@ -23,7 +23,6 @@ function vh_form($slug = null)
 {
     $form = \VaahCms\Modules\Forms\Models\ContactForm::where('slug',$slug)
         ->where('is_published',1)
-        ->where('vh_theme_id',vh_get_theme_id())
         ->with(['fields'])->first();
 
     if(!$form){

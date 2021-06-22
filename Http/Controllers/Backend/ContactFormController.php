@@ -31,6 +31,7 @@ class ContactFormController extends Controller
         $data['themes'] = Theme::getActiveThemes();
 
         $data['bulk_actions'] = vh_general_bulk_actions();
+        $data['mail'] = config('mail.from');
 
         $data['form_messages'] = [
             'success' => 'Your message was sent successfully. Thanks.',

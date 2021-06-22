@@ -363,7 +363,7 @@
                         </section>
                     </b-tab-item>
 
-                    <b-tab-item label="Messages">
+                    <b-tab-item label="Additional Setting">
                         <section>
                             <div class="mt-5">
                                 <div class="block">
@@ -382,13 +382,6 @@
                                 </div>
                             </div>
                         </section>
-                    </b-tab-item>
-
-                    <b-tab-item label="Additional Setting" disabled>
-                        Nunc nec velit nec libero vestibulum eleifend.
-                        Curabitur pulvinar congue luctus.
-                        Nullam hendrerit iaculis augue vitae ornare.
-                        Maecenas vehicula pulvinar tellus, id sodales felis lobortis eget.
                     </b-tab-item>
                 </b-tabs>
             </div>
