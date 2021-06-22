@@ -108,7 +108,7 @@
 
 
 
-                                    <template v-if="label == 'is_published' || label == 'is_commentable'">
+                                    <template v-if="label == 'is_published' || label == 'is_use_default_url'">
                                         <TableTrStatus :value="value"
                                                        :label="label">
                                         </TableTrStatus>
