@@ -1,6 +1,5 @@
 import GlobalComponents from '../../vaahvue/helpers/GlobalComponents';
 import ListLargeView from './partials/ListLargeView';
-import ListMediumView from './partials/ListMediumView';
 import ListSmallView from './partials/ListSmallView';
 
 let namespace = 'content_forms';
@@ -16,7 +15,6 @@ export default {
     components:{
         ...GlobalComponents,
         ListLargeView,
-        ListMediumView,
         ListSmallView
 
     },

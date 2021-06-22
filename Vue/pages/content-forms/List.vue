@@ -50,7 +50,7 @@
 
 
                         <!--actions-->
-                        <div class="level" v-if="page.list_view !='small'">
+                        <div class="level" v-if="page.list_view === 'large'">
 
                             <!--left-->
                             <div class="level-left" >
@@ -154,7 +154,7 @@
 
 
                         <!--filters-->
-                        <div class="level" v-if="page.show_filters">
+                        <div class="level" v-if="page.show_filters && page.list_view === 'large'">
 
                             <div class="level-left">
 
@@ -270,16 +270,12 @@
 
                             <div class="block" style="margin-bottom: 0px;" >
 
-                                <div v-if="page.list_view == 'small'">
-                                    <ListSmallView @eReloadList="getList"/>
-                                </div>
-
-                                <div v-else-if="page.list_view == 'medium'">
-                                    <ListMediumView @eReloadList="getList"/>
+                                <div v-if="page.list_view == 'large'">
+                                    <ListLargeView @eReloadList="getList"/>
                                 </div>
 
                                 <div v-else>
-                                    <ListLargeView @eReloadList="getList"/>
+                                    <ListSmallView @eReloadList="getList"/>
                                 </div>
 
                             </div>

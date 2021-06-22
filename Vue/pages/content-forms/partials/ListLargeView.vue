@@ -25,20 +25,7 @@
                     </b-tooltip>
                 </b-table-column>
 
-                <b-table-column  v-slot="props" field="theme" label="Theme">
-
-                    <b-tooltip v-if="props.row.theme" label="Copy Theme Slug" type="is-dark">
-                        <vh-copy class="text-copyable"
-                                 :data="props.row.theme.slug"
-                                 :label="props.row.theme.name"
-                                 @copied="copiedData"
-                        >
-                        </vh-copy>
-
-                    </b-tooltip>
-                </b-table-column>
-
-                <b-table-column v-slot="props" width="100"
+                <b-table-column v-slot="props"
                                 field="is_published" label="Is Published">
 
                     <div v-if="props.row.deleted_at">
@@ -71,13 +58,18 @@
                 </b-table-column>
 
 
+
+                <b-table-column v-slot="props" field="created_at" label="Created At" >
+                    {{ $vaah.fromNow(props.row.created_at) }}
+                </b-table-column>
+
+
                 <b-table-column v-slot="props" field="actions" label=""
                                 width="80">
 
                     <b-tooltip label="Content Structure" type="is-dark">
                         <b-button size="is-small"
-                                  tag="router-link"
-                                  :to="{name:'content.forms.edit', params:{id: props.row.id}}"
+                                  @click="setContentStructureItem(props.row)"
                                   icon-left="align-left">
                         </b-button>
                     </b-tooltip>

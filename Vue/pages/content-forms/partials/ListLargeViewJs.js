@@ -64,6 +64,11 @@ export default {
             this.$router.push({name: 'content.forms.view', params:{id:item.id}})
         },
         //---------------------------------------------------------------------
+        setContentStructureItem: function (item) {
+            this.update('active_item', item);
+            this.$router.push({name: 'content.forms.edit', params:{id:item.id}})
+        },
+        //---------------------------------------------------------------------
         changeStatus: function (id) {
             this.$Progress.start();
             let url = this.ajax_url+'/actions/bulk-change-status';

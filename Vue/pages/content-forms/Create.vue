@@ -389,15 +389,18 @@
                             <div class="mt-5">
                                 <div class="block">
 
-                                    <b-field label="Success" type="is-success" :label-position="label_position">
+                                    <b-field label="Success" type="is-success"
+                                             :label-position="label_position">
                                         <b-input v-model="new_item.message_fields.success"></b-input>
                                     </b-field>
 
-                                    <b-field label="Failure" type="is-danger" :label-position="label_position">
+                                    <b-field label="Failure" type="is-danger"
+                                             :label-position="label_position">
                                         <b-input v-model="new_item.message_fields.failure"></b-input>
                                     </b-field>
 
-                                    <b-field label="Terms" type="is-info" :label-position="label_position">
+                                    <b-field label="Terms" type="is-info"
+                                             :label-position="label_position">
                                         <b-input v-model="new_item.message_fields.term"></b-input>
                                     </b-field>
                                 </div>

@@ -1,7 +1,9 @@
 <script src="./EditJs.js"></script>
 <template>
-    <div class="column is-8" v-if="page.assets && item">
 
+
+    <div class="column is-8" v-if="page.assets && item">
+        
         <div class="card">
 
             <!--header-->
@@ -138,7 +140,7 @@
 
                                         <div class="card-content is-paddingless">
 
-                                            <div class="draggable" style="background-color: #fafafa">
+                                            <div v-if="item.fields" class="draggable" style="background-color: #fafafa">
 
                                                 <draggable class="dropzone" :list="item.fields"
                                                            :group="{name:'fields'}">
@@ -243,7 +245,7 @@
                                                         </div>
                                                     </div>
                                                 </draggable>
-                                                <p v-if="item.fields.length === 0"
+                                                <p v-if="item.fields && item.fields.length === 0"
                                                    class="has-text-centered has-text-weight-bold">
                                                     DROP HERE
                                                 </p>
