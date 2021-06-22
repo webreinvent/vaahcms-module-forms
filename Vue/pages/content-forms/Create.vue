@@ -57,19 +57,6 @@
                         <b-input v-model="new_item.slug"></b-input>
                     </b-field>
 
-                    <b-field label="Themes"
-                             :label-position="label_position">
-
-                        <b-select v-model="new_item.vh_theme_id">
-                            <option value="">Select a Theme</option>
-                            <option v-for="(theme, index) in page.assets.themes"
-                                    :value="theme.id"
-                            >{{theme.name}}</option>
-                        </b-select>
-
-
-                    </b-field>
-
                 </div>
                 <b-field label="Is Published" :label-position="label_position">
                     <b-radio-button v-model="new_item.is_published"
@@ -366,11 +353,9 @@
                                                          placeholder="message"
                                                          :labelPosition="label_position"
                                                          v-model="new_item.mail_fields.message"
-                                                         @onInput=""
-                                                         @onChange=""
-                                                         @onBlur=""
-                                                         @onFocus="">
+                                                         :upload_url="ajax_url+'/upload'">
                                         </ContentFieldAll>
+
                                     </b-field>
                                 </div>
                             </div>

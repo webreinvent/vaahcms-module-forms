@@ -56,19 +56,6 @@
                         <b-input v-model="item.slug"></b-input>
                     </b-field>
 
-                    <b-field label="Themes"
-                             :label-position="label_position">
-
-                        <b-select v-model="item.vh_theme_id">
-                            <option value="">Select a Theme</option>
-                            <option v-for="(theme, index) in page.assets.themes"
-                                    :value="theme.id"
-                            >{{theme.name}}</option>
-                        </b-select>
-
-
-                    </b-field>
-
                 </div>
                 <b-field label="Is Published" :label-position="label_position">
                     <b-radio-button v-model="item.is_published"

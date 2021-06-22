@@ -16,6 +16,9 @@ import VueFuse from 'vue-fuse'
 import VueProgressBar from 'vue-progressbar'
 import CKEditor from '@ckeditor/ckeditor5-vue2'
 
+import 'jodit/build/jodit.min.css'
+import JoditVue from 'jodit-vue'
+
 
 
 import VaahVuePagination from 'vaah-vue-pagination'
@@ -35,6 +38,7 @@ Vue.use(VueRouter);
 Vue.use(Vuex);
 Vue.use(VueFuse);
 Vue.use(CKEditor);
+Vue.use(JoditVue);
 Vue.use(vaah);
 //---------/Helpers
 

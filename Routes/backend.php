@@ -84,4 +84,8 @@ Route::group(
         Route::get('/getModuleSections', 'ContactFormController@getModuleSections')
             ->name('backend.cms.content.types.module-section');
         //---------------------------------------------------------
+        Route::post('/upload', 'ContactFormController@upload')
+            ->name('backend.cms.media.upload');
+        //---------------------------------------------------------
     });
+

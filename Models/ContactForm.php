@@ -27,7 +27,6 @@ class ContactForm extends Model {
     //-------------------------------------------------
     protected $fillable = [
         'uuid',
-        'vh_theme_id',
         'name',
         'slug',
         'is_published',
@@ -212,7 +211,6 @@ class ContactForm extends Model {
 
         $fillable['name'] = $inputs['name'];
         $fillable['slug'] = $inputs['slug'];
-        $fillable['vh_theme_id'] = $inputs['vh_theme_id'];
         $fillable['is_published'] = $inputs['is_published'];
         $fillable['action_url'] = $inputs['action_url'];
         $fillable['method_type'] = $inputs['method_type'];
@@ -297,7 +295,6 @@ class ContactForm extends Model {
             'name' => 'required|max:255',
             'slug' => 'required',
             'is_published' => 'required',
-            'vh_theme_id' => 'required',
             'method_type' => 'required',
             'fields' => 'required|array',
             'fields.*.name' => 'required|max:100',

@@ -18,8 +18,7 @@ class VhFormContactFormsTable extends Migration
             $table->increments('id');
             $table->uuid('uuid')->nullable()->index();
 
-            $table->integer('vh_theme_id')->nullable()->index();
-            $table->string('name')->nullable()->index();
+             $table->string('name')->nullable()->index();
             $table->string('slug')->nullable()->index();
             $table->boolean('is_published')->nullable()->index();
             $table->boolean('is_use_default_url')->nullable()->index();
