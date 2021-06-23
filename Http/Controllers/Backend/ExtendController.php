@@ -42,7 +42,7 @@ class ExtendController extends Controller
         $links = [];
 
         $links[0] = [
-            'link' => self::$link."content-forms/",
+            'link' => self::$link."content/",
             'icon' => 'file-alt',
             'label'=> 'Forms'
         ];

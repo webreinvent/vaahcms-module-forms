@@ -21,7 +21,7 @@ use Illuminate\Support\Str;
 
 function vh_form($slug = null)
 {
-    $form = \VaahCms\Modules\Forms\Models\ContactForm::where('slug',$slug)
+    $form = \VaahCms\Modules\Forms\Models\FormContent::where('slug',$slug)
         ->where('is_published',1)
         ->with(['fields'])->first();
 
@@ -32,7 +32,7 @@ function vh_form($slug = null)
     return get_form_field($form);
 
 }
-function get_form_field(\VaahCms\Modules\Forms\Models\ContactForm $form)
+function get_form_field(\VaahCms\Modules\Forms\Models\FormContent $form)
 {
 
     if(count($form->fields) === 0){

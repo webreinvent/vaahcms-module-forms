@@ -38,6 +38,7 @@ export default {
         $route(to, from) {
             this.updateView();
             this.updateMessages();
+            this.setMailCredential();
         },
 
         'page.assets': {
@@ -202,6 +203,7 @@ export default {
         {
             let new_item = this.getNewItem();
             this.update('new_item', new_item);
+            this.setMailCredential();
         },
         //---------------------------------------------------------------------
         getNewItem: function()

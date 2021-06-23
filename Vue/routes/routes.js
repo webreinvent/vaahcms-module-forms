@@ -46,14 +46,14 @@ routes.push(routes_list);
 
 
 
-import ContentFormList from "./../pages/content-forms/List";
-import ContentFormCreate from "./../pages/content-forms/Create";
-import ContentFormView from "./../pages/content-forms/View";
-import ContentFormContentStructure from "./../pages/content-forms/ContentStructure";
-import ContentFormEdit from "./../pages/content-forms/Edit";
+import ContentFormList from "./../pages/forms/List";
+import ContentFormCreate from "./../pages/forms/Create";
+import ContentFormView from "./../pages/forms/View";
+import ContentFormContentStructure from "./../pages/forms/ContentStructure";
+import ContentFormEdit from "./../pages/forms/Edit";
 
 routes_list =     {
-    path: '/content-forms',
+    path: '/content',
     component: Backend,
     props: true,
     meta: {

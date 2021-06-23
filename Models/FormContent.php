@@ -6,13 +6,13 @@ use Illuminate\Support\Str;
 use WebReinvent\VaahCms\Entities\User;
 use WebReinvent\VaahCms\Traits\CrudWithUuidObservantTrait;
 
-class ContactForm extends Model {
+class FormContent extends Model {
 
     use SoftDeletes;
     use CrudWithUuidObservantTrait;
 
     //-------------------------------------------------
-    protected $table = 'vh_form_contact_forms';
+    protected $table = 'vh_form_contents';
     //-------------------------------------------------
     protected $dates = [
         'is_published_at',
@@ -158,7 +158,7 @@ class ContactForm extends Model {
     //-------------------------------------------------
     public function fields()
     {
-        return $this->hasMany(ContactFormField::class,
+        return $this->hasMany(FormContentField::class,
             'vh_form_contact_form_id', 'id'
         )->orderBy('sort', 'asc');
     }
@@ -212,7 +212,7 @@ class ContactForm extends Model {
         $item->fill($fillable);
         $item->save();
 
-        ContactFormField::syncWithFormFields($item, $inputs['fields']);
+        FormContentField::syncWithFormFields($item, $inputs['fields']);
 
         $response['status'] = 'success';
         $response['data']['item'] =$item;
@@ -424,7 +424,7 @@ class ContactForm extends Model {
         $item->save();
 
 
-        ContactFormField::syncWithFormFields($item, $inputs['fields']);
+        FormContentField::syncWithFormFields($item, $inputs['fields']);
 
 
         $response['status'] = 'success';

@@ -8,7 +8,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Mail\Mailable;
 use VaahCms\Modules\Forms\Http\Controllers\Backend\BackendController;
-use VaahCms\Modules\Forms\Models\ContactForm;
+use VaahCms\Modules\Forms\Models\FormContent;
 
 
 class FormMail extends Mailable
@@ -25,7 +25,7 @@ class FormMail extends Mailable
      *
      * @param $request
      */
-    public function __construct($request, ContactForm $form, $attachments)
+    public function __construct($request, FormContent $form, $attachments)
     {
         $this->request = $request;
         $this->form = $form;

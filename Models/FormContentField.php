@@ -9,13 +9,13 @@ use VaahCms\Modules\Cms\Entities\FormGroup;
 use WebReinvent\VaahCms\Entities\User;
 use WebReinvent\VaahCms\Traits\CrudWithUuidObservantTrait;
 
-class ContactFormField extends Model {
+class FormContentField extends Model {
 
     use SoftDeletes;
     use CrudWithUuidObservantTrait;
 
     //-------------------------------------------------
-    protected $table = 'vh_form_contact_form_fields';
+    protected $table = 'vh_form_content_fields';
     //-------------------------------------------------
     protected $dates = [
         'created_at',
@@ -128,7 +128,7 @@ class ContactFormField extends Model {
 
     }
 
-    public static function syncWithFormFields(ContactForm $form, $fields_array){
+    public static function syncWithFormFields(FormContent $form, $fields_array){
 
 
         //delete form group fields which are just removed

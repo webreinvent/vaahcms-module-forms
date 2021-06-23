@@ -5,7 +5,7 @@ use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use VaahCms\Modules\Cms\Entities\ContentType;
 use VaahCms\Modules\Cms\Entities\FieldType;
-use VaahCms\Modules\Forms\Models\ContactForm;
+use VaahCms\Modules\Forms\Models\FormContent;
 use VaahCms\Modules\Forms\Models\FormFieldType;
 use WebReinvent\VaahCms\Entities\Theme;
 
@@ -47,21 +47,21 @@ class ContactFormController extends Controller
     //----------------------------------------------------------
     public function postCreate(Request $request)
     {
-        $response = ContactForm::postCreate($request);
+        $response = FormContent::postCreate($request);
         return response()->json($response);
     }
     //----------------------------------------------------------
     public function getList(Request $request)
     {
 
-        $response = ContactForm::getList($request);
+        $response = FormContent::getList($request);
         return response()->json($response);
     }
     //----------------------------------------------------------
     public function getItem(Request $request, $id)
     {
 
-        $response = ContactForm::getItem($id);
+        $response = FormContent::getItem($id);
         return response()->json($response);
 
     }
@@ -82,7 +82,7 @@ class ContactFormController extends Controller
     //----------------------------------------------------------
     public function postStore(Request $request,$id)
     {
-        $response = ContactForm::postStore($request,$id);
+        $response = FormContent::postStore($request,$id);
         return response()->json($response);
     }
 
@@ -114,25 +114,25 @@ class ContactFormController extends Controller
 
             //------------------------------------
             case 'bulk-change-status':
-                $response = ContactForm::bulkStatusChange($request);
+                $response = FormContent::bulkStatusChange($request);
                 break;
             //------------------------------------
             case 'bulk-trash':
 
-                $response = ContactForm::bulkTrash($request);
+                $response = FormContent::bulkTrash($request);
 
                 break;
             //------------------------------------
             case 'bulk-restore':
 
-                $response = ContactForm::bulkRestore($request);
+                $response = FormContent::bulkRestore($request);
 
                 break;
 
             //------------------------------------
             case 'bulk-delete':
 
-                $response = ContactForm::bulkDelete($request);
+                $response = FormContent::bulkDelete($request);
 
                 break;
 

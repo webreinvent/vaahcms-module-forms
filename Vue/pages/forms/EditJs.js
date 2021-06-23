@@ -141,7 +141,6 @@ export default {
 
             if(data)
             {
-                console.log('working');
                 this.title = data.name;
 
                 if(data.action_url.includes('https://') || data.action_url.includes('http://')){

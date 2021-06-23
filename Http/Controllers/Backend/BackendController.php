@@ -4,7 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use VaahCms\Modules\Forms\Mail\FormMail;
-use VaahCms\Modules\Forms\Models\ContactForm;
+use VaahCms\Modules\Forms\Models\FormContent;
 
 class BackendController extends Controller
 {
@@ -64,7 +64,7 @@ class BackendController extends Controller
             }
         }
 
-        $form = ContactForm::where('id',$request->id)->first();
+        $form = FormContent::where('id',$request->id)->first();
 
         $to = env('MAIL_FROM_ADDRESS');
 
