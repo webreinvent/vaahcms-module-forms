@@ -1,9 +1,9 @@
 import Vue from "vue";
 
-window.Vue = Vue;
+//window.Vue = Vue;
 
-window.$ = require('jquery');
-window.JQuery = require('jquery');
+//window.$ = require('jquery');
+//window.JQuery = require('jquery');
 
 
 
@@ -14,7 +14,7 @@ import VueRouter from 'vue-router';
 import Vuex from 'vuex';
 import VueFuse from 'vue-fuse'
 import VueProgressBar from 'vue-progressbar'
-import CKEditor from '@ckeditor/ckeditor5-vue2'
+// import CKEditor from '@ckeditor/ckeditor5-vue2'
 
 import 'jodit/build/jodit.min.css'
 import JoditVue from 'jodit-vue'
@@ -37,7 +37,7 @@ Vue.use(VueAxios, axios);
 Vue.use(VueRouter);
 Vue.use(Vuex);
 Vue.use(VueFuse);
-Vue.use(CKEditor);
+// Vue.use(CKEditor);
 Vue.use(JoditVue);
 Vue.use(vaah);
 //---------/Helpers

@@ -4,6 +4,7 @@ import ContentFieldAll from '../../vaahvue/reusable/content-fields/All'
 
 let namespace = 'content_forms';
 
+
 export default {
     props: ['id'],
     computed:{

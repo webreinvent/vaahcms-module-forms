@@ -95,6 +95,9 @@
                         </b-select>
                     </b-field>
 
+
+
+
                     <b-field v-if="!item.is_use_default_url">
                         <p class="control"
                            :style="[url_type === 'external' ? {'display': 'none'} : {'display': 'block'}]">
