@@ -90,6 +90,18 @@ function get_form_field(\VaahCms\Modules\Form\Models\FormContent $form)
 
         switch($field->type->slug){
 
+            case 'password':
+                $value .= "<input class='input' type='password'
+                 name='".\Illuminate\Support\Str::slug($field->name)."'";
+
+                if($field->is_required){
+                    $value .= " required ";
+                }
+
+                $value .= "placeholder='".$field->name."'>";
+
+                break;
+
             case 'tel':
                 $value .= "<input class='input' type='number' value='".old(\Illuminate\Support\Str::slug($field->name)). "'
                  name='".\Illuminate\Support\Str::slug($field->name)."'";

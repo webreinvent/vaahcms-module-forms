@@ -10,6 +10,15 @@
         }
     },
     {
+        "name": "Password",
+        "excerpt": "",
+        "meta": {
+            "container_start": "span",
+            "container_end": "short-text",
+            "is_hidden": false
+        }
+    },
+    {
         "name": "Textarea",
         "excerpt": "",
         "meta": {
