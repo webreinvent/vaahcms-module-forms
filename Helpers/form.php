@@ -57,14 +57,12 @@ function get_form_field(\VaahCms\Modules\Forms\Models\FormContent $form)
 
     foreach ($form->fields as $field){
 
-        $value .= "<div ";
+        $value .= "<div class=\"field";
 
         if($field->meta->is_hidden){
-            $value .= " class=\"field is-hidden\"> ";
-        }else{
-            $value .= " class=\"field\"> ";
+            $value .= " is-hidden";
         }
-
+        $value .= "\"> ";
 
         if($field->type->slug !== "checkboxes"){
             $value .= "<label class='label'>".$field->name."</label>";
@@ -168,7 +166,10 @@ function get_form_field(\VaahCms\Modules\Forms\Models\FormContent $form)
 
                 $value .= '>
                               '.$field->name.'
+                              
                             </label>';
+
+
                 break;
 
             case 'radio-buttons':
