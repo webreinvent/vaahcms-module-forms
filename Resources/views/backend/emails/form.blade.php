@@ -225,13 +225,12 @@
                                                         <p style="margin:0px;">
 
                                                             User with the following details has submit a form:<br/><br/>
-                                                            {{--                                                        Name     : {{ $request->has('name')     ? $request->name : 'NA'  }}<br/>--}}
                                                             @php
 
-                                                                unset($request['_token']);
-                                                                unset($request['id']);
+                                                                unset($input['_token']);
+                                                                unset($input['id']);
                                                             @endphp
-                                                            @foreach($request->all() as $key => $value)
+                                                            @foreach($input as $key => $value)
                                                                 {{ \Illuminate\Support\Str::title(str_replace('-', ' ', $key)) }}    : {{ $value ? $value : 'N/A' }}<br/>
                                                             @endforeach
 

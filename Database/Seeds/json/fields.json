@@ -130,7 +130,8 @@
         "meta": {
             "container_start": "span",
             "container_end": "file",
-            "is_hidden": true
+            "is_hidden": true,
+            "is_multiple": false
         }
     },
     {

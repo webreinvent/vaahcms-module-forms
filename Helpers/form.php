@@ -99,10 +99,14 @@ function get_form_field(\VaahCms\Modules\Forms\Models\FormContent $form)
                     $value .= " required ";
                 }
 
-                $value .= 'type="'.$field->type->slug.'" name="'.\Illuminate\Support\Str::slug($field->name).'">
+                if($field->meta->is_multiple){
+                    $value .= " multiple=\"multiple\" ";
+                }
+
+                $value .= 'type="'.$field->type->slug.'" name="'.\Illuminate\Support\Str::slug($field->name).'[]">
                                 <span class="file-cta">
                                   <span class="file-icon">
-                                    <i class="fas fa-upload"></i>
+                                    <i class="fa fa-upload"></i>
                                   </span>
                                   <span class="file-label">
                                     Choose a file…

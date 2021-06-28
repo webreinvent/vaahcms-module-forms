@@ -16,7 +16,7 @@ class FormMail extends Mailable
     use Queueable, SerializesModels;
 
 
-    public $request;
+    public $input;
     public $form;
     public $files;
 
@@ -25,9 +25,9 @@ class FormMail extends Mailable
      *
      * @param $request
      */
-    public function __construct($request, FormContent $form, $attachments)
+    public function __construct($input, FormContent $form, $attachments)
     {
-        $this->request = $request;
+        $this->input = $input;
         $this->form = $form;
         $this->files = $attachments;
     }
@@ -43,18 +43,18 @@ class FormMail extends Mailable
             $from_name = env('APP_NAME');
 
             if($this->form->mail_fields->from->name){
-                $from_name = BackendController::translateDynamicStringOfForms($this->form->mail_fields->from->name, $this->request->all());
+                $from_name = BackendController::translateDynamicStringOfForms($this->form->mail_fields->from->name, $this->input);
             }
 
             if($this->form->mail_fields->from->email){
 
-                $from_email = BackendController::translateDynamicStringOfForms($this->form->mail_fields->from->email, $this->request->all());
+                $from_email = BackendController::translateDynamicStringOfForms($this->form->mail_fields->from->email, $this->input);
 
                 $this->from($from_email,$from_name);
             }
 
             if($this->form->mail_fields->subject){
-                $subject = BackendController::translateDynamicStringOfForms($this->form->mail_fields->subject, $this->request->all());
+                $subject = BackendController::translateDynamicStringOfForms($this->form->mail_fields->subject, $this->input);
                 $this->subject($subject);
             }
         }
