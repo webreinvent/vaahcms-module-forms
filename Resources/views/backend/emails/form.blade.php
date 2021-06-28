@@ -237,9 +237,6 @@
 
 
                                                         </p>
-                                                        <br>
-
-                                                        <p style="width:100%;text-align:center;"><b>******Please do not reply to this email.*******</b></p>
 
                                                     @endif
 

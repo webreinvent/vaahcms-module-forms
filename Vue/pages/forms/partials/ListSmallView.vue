@@ -17,7 +17,7 @@
                 </b-table-column>
 
                 <b-table-column v-slot="props" field="name" label="Name">
-                    <b-tooltip label="Copy Form Code" type="is-dark">
+                    <b-tooltip label="Copy Code" type="is-dark">
                         <vh-copy class="text-copyable"
                                  :data="copyCode(props.row.slug)"
                                  :label="props.row.name"

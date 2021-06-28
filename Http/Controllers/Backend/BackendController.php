@@ -33,8 +33,6 @@ class BackendController extends Controller
 
     public function formSubmit(Request $request)
     {
-        $file = $request->hasFile('tes');
-
         $attachments = array();
 
         if($request->file()){
