@@ -160,10 +160,6 @@ function get_form_field(\VaahCms\Modules\Form\Models\FormContent $form)
                               <input type="checkbox" value="'.$option. '"
                                name="'.Illuminate\Support\Str::slug($field->name).'[]"';
 
-                    if($field->is_required){
-                        $value .= " required ";
-                    }
-
                     $value .= '>
                               '.$option.'
                               

@@ -131,8 +131,8 @@ class FormsServiceProvider extends ServiceProvider
         ],'views');
 
         $this->loadViewsFrom(array_merge(array_map(function ($path) {
-            return $path . '/views/vaahcms/modules/forms';
-        }, \Config::get('view.paths')), [$sourcePath]), 'forms');
+            return $path . '/views/vaahcms/modules/form';
+        }, \Config::get('view.paths')), [$sourcePath]), 'form');
 
     }
 
