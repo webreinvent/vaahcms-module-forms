@@ -57,7 +57,14 @@ function get_form_field(\VaahCms\Modules\Forms\Models\FormContent $form)
 
     foreach ($form->fields as $field){
 
-        $value .= "<div class=\"field\">";
+        $value .= "<div ";
+
+        if($field->meta->is_hidden){
+            $value .= " class=\"field is-hidden\"> ";
+        }else{
+            $value .= " class=\"field\"> ";
+        }
+
 
         if($field->type->slug !== "checkboxes"){
             $value .= "<label class='label'>".$field->name."</label>";
