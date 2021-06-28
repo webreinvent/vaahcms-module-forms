@@ -112,7 +112,6 @@ class BackendController extends Controller
             return back()->with('success', $form->message_fields->success);
         }catch (\Exception $e){
             $errors[]             = $form->message_fields->failure;
-            dd($e);
             $errors[]             = $e->getMessage();
 
             return back()->with('failed', $errors)->withInput();

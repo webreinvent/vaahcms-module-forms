@@ -51,7 +51,25 @@ function get_form_field(\VaahCms\Modules\Form\Models\FormContent $form)
 
     }
 
-    $value = '<form enctype="multipart/form-data" action="'.$url.'" method="'.$form->method_type.'">'."\n";
+    $value = Session::get("failed") ? "<article class=\"message is-danger\">
+            <div class=\"message-body\">
+                <ul><li>".
+        Session::get("failed")[0]
+                ."</li><li>".
+        Session::get("failed")[1]
+                ."</li></ul>
+            </div>
+        </article>":null;
+
+    $value .= Session::get('success') ? "<article class=\"message is-info\">
+            <div class=\"message-body\">
+                <strong>".Session::get('success')."</strong>
+            </div>
+        </article>":null;
+
+
+
+    $value .= '<form enctype="multipart/form-data" action="'.$url.'" method="'.$form->method_type.'">'."\n";
     $value .= '<input type="hidden" name="_token" value="'.csrf_token().'" />'."\n";
     $value .= '<input type="hidden" name="id" value="'.$form->id.'" />'."\n";
 
@@ -176,10 +194,10 @@ function get_form_field(\VaahCms\Modules\Form\Models\FormContent $form)
 
                 foreach ($field->meta->option as $option){
                     $value .= '<label class="radio">
-                                <input type="radio" value="'.\Illuminate\Support\Str::slug($field->name). '" ';
+                                <input type="radio"';
 
                     if($field->is_required){
-                        $value .= " required ";
+                        $value .= " required";
                     }
 
                     $value .= 'value="'.$option.'" name="'.\Illuminate\Support\Str::slug($field->name).'">

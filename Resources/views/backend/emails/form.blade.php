@@ -252,47 +252,6 @@
                             </tbody>
                         </table>
                     </th>
-                    <th style="width:36px;background-color:transparent;" class="out_hide"></th>
-                </tr>
-                </tbody>
-            </table>
-        </th>
-    </tr>
-    </tbody>
-</table>
-<table style="text-align:center;border-spacing:0;border:0;padding:0;width:100%;display:block;margin:0 auto;border:none;max-width:640px;table-layout:fixed;">
-    <tbody style="width:100%;display:block;">
-    <tr class="blockClass holderMax" style="width:640px;display:block">
-        <th class="blockClassPadding"
-            style="padding:0px;font-weight:normal;width:100%;display:block;vertical-align:middle;padding:0px;background-color:#f4f6f8;">
-            <table style="text-align:center;border-spacing:0;border:0;padding:0;width:100%;border: none; display: block;min-height:30px;">
-                <tbody style="width:100%;display:block">
-                <tr style="width:100%;display:block">
-                    <th style="width:37px;background-color:#f4f6f8;" class="out_hide"></th>
-                    <th style=" vertical-align:top;text-align:center;font-weight:normal;width:564px; padding:0px; background-color:transparent; overflow:hidden;"
-                        class="cellFull  layout_width_88_23   outlook_width_600 ">
-                        <table class="outlook_width_600 "
-                               style="border-spacing:0;border:0;padding:0;width:100%;display:block!important">
-                            <tbody style="width:100%;display:block">
-                            <tr style="width:100%;display:block;">
-                                <th class="outlook_width_600   wild_full  text_padding_0 "
-                                    style="font-weight:normal;border-collapse:collapse;vertical-align:top;background-color:transparent;max-width:564px;display:inline-block;">
-                                    <table class="cellFull chromeFix"
-                                           style="border-spacing:0;border:0;padding:0;width:100%;max-width:600px">
-                                        <tbody class="smallFull">
-                                        <tr style="width:100%;" class="smallFull">
-                                            <td class="text_padding_mobile_0 cellFull  noMoreHeight"
-                                                style="width:100%;border-collapse: collapse;text-align:left;height:0px;vertical-align:middle">
-                                            </td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                </th>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </th>
-                    <th style="width:37px;background-color:#f4f6f8;" class="out_hide"></th>
                 </tr>
                 </tbody>
             </table>
