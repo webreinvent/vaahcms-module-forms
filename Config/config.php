@@ -2,7 +2,7 @@
 
 return [
     "name"=> "Form",
-    "title"=> "Module to create Form",
+    "title"=> "Form",
     "slug"=> "form",
     "thumbnail"=> "https://placehold.jp/300x160.png",
     "excerpt"=> "Create Form",
