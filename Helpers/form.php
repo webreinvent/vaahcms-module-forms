@@ -82,7 +82,9 @@ function get_form_field(\VaahCms\Modules\Form\Models\FormContent $form)
         }
         $value .= "\"> ";
 
-        $value .= "<label class='label'>".$field->name."</label>";
+        if($field->type->slug !== "acceptance"){
+            $value .= "<label class='label'>".$field->name."</label>";
+        }
 
         $value .= "<div class=\"control\">";
 
@@ -195,6 +197,26 @@ function get_form_field(\VaahCms\Modules\Form\Models\FormContent $form)
                               
                             </label> &nbsp;';
                 }
+
+
+
+
+                break;
+
+            case 'acceptance':
+
+                    $value .= '<label class="checkbox">
+                              <input type="checkbox"
+                               name="acceptance"';
+
+                    if($field->is_required){
+                        $value .= " required";
+                    }
+
+                    $value .= '>
+                              '.$field->name.'
+                              
+                            </label> &nbsp;';
 
 
 

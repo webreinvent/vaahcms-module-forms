@@ -115,16 +115,7 @@
         "meta": {
             "container_start": "span",
             "container_end": "acceptance",
-            "is_hidden": false
-        }
-    },
-    {
-        "name": "Quiz",
-        "excerpt": "",
-        "meta": {
-            "container_start": "span",
-            "container_end": "quiz",
-            "is_hidden": false
+            "is_hidden": true
         }
     },
     {
@@ -133,7 +124,7 @@
         "meta": {
             "container_start": "span",
             "container_end": "captcha",
-            "is_hidden": false
+            "is_hidden": true
         }
     },
     {

@@ -97,6 +97,8 @@ class BackendController extends Controller
 
         }
 
+        unset($input['acceptance']);
+
 
         $form = FormContent::where('id',$input['id'])->first();
 

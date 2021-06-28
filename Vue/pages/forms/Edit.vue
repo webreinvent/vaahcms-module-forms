@@ -312,7 +312,7 @@
 
                                                 <div v-for="(field, index) in page.assets.field_types"
                                                      :key="index">
-                                                    <b-field class="has-margin-bottom-5" expanded>
+                                                    <b-field v-if="field.slug !== 'quiz'" class="has-margin-bottom-5" expanded>
                                                         <p class="control drag">
                                                             <span class="button is-static">:::</span>
                                                         </p>
