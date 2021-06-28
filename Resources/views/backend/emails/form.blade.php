@@ -231,7 +231,10 @@
                                                                 unset($input['id']);
                                                             @endphp
                                                             @foreach($input as $key => $value)
-                                                                {{ \Illuminate\Support\Str::title(str_replace('-', ' ', $key)) }}    : {{ $value ? $value : 'N/A' }}<br/>
+                                                                @if($value)
+                                                                    {{ \Illuminate\Support\Str::title(str_replace('-', ' ', $key)) }}    : {{ is_array($value) ? implode(', ',$value) : $value }}<br/>
+                                                                @endif
+
                                                             @endforeach
 
 

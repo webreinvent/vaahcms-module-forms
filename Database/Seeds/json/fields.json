@@ -51,7 +51,7 @@
         "meta": {
             "container_start": "span",
             "container_end": "number",
-            "is_hidden": true
+            "is_hidden": false
         }
     },
     {
@@ -60,7 +60,7 @@
         "meta": {
             "container_start": "span",
             "container_end": "date",
-            "is_hidden": true
+            "is_hidden": false
         }
     },
     {
@@ -69,7 +69,7 @@
         "meta": {
             "container_start": "span",
             "container_end": "drop-down menu",
-            "is_hidden": true,
+            "is_hidden": false,
             "is_multiple": false,
             "option": [
                 "Default"
@@ -82,7 +82,10 @@
         "meta": {
             "container_start": "span",
             "container_end": "checkboxes",
-            "is_hidden": true
+            "is_hidden": false,
+            "option": [
+                "Default"
+            ]
         }
     },
     {
@@ -91,7 +94,7 @@
         "meta": {
             "container_start": "span",
             "container_end": "radio buttons",
-            "is_hidden": true,
+            "is_hidden": false,
             "option": [
                 "Default"
             ]
@@ -103,7 +106,7 @@
         "meta": {
             "container_start": "span",
             "container_end": "acceptance",
-            "is_hidden": true
+            "is_hidden": false
         }
     },
     {
@@ -112,7 +115,7 @@
         "meta": {
             "container_start": "span",
             "container_end": "quiz",
-            "is_hidden": true
+            "is_hidden": false
         }
     },
     {
@@ -121,7 +124,7 @@
         "meta": {
             "container_start": "span",
             "container_end": "captcha",
-            "is_hidden": true
+            "is_hidden": false
         }
     },
     {
@@ -130,7 +133,7 @@
         "meta": {
             "container_start": "span",
             "container_end": "file",
-            "is_hidden": true,
+            "is_hidden": false,
             "is_multiple": false
         }
     },
@@ -140,7 +143,7 @@
         "meta": {
             "container_start": "span",
             "container_end": "submit",
-            "is_hidden": true
+            "is_hidden": false
         }
     }
 ]

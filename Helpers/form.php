@@ -64,9 +64,7 @@ function get_form_field(\VaahCms\Modules\Forms\Models\FormContent $form)
         }
         $value .= "\"> ";
 
-        if($field->type->slug !== "checkboxes"){
-            $value .= "<label class='label'>".$field->name."</label>";
-        }
+        $value .= "<label class='label'>".$field->name."</label>";
 
         $value .= "<div class=\"control\">";
 
@@ -156,18 +154,23 @@ function get_form_field(\VaahCms\Modules\Forms\Models\FormContent $form)
                 break;
 
             case 'checkboxes':
-                $value .= '<label class="checkbox">
-                              <input type="checkbox" value="'.\Illuminate\Support\Str::slug($field->name). '"
-                               name="'.Illuminate\Support\Str::slug($field->name).'"';
 
-                if($field->is_required){
-                    $value .= " required ";
+                foreach ($field->meta->option as $option){
+                    $value .= '<label class="checkbox">
+                              <input type="checkbox" value="'.$option. '"
+                               name="'.Illuminate\Support\Str::slug($field->name).'[]"';
+
+                    if($field->is_required){
+                        $value .= " required ";
+                    }
+
+                    $value .= '>
+                              '.$option.'
+                              
+                            </label> &nbsp;';
                 }
 
-                $value .= '>
-                              '.$field->name.'
-                              
-                            </label>';
+
 
 
                 break;
