@@ -1,10 +1,10 @@
-<?php namespace VaahCms\Modules\Forms\Http\Controllers\Backend;
+<?php namespace VaahCms\Modules\Form\Http\Controllers\Backend;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
-use VaahCms\Modules\Forms\Mail\FormMail;
-use VaahCms\Modules\Forms\Models\FormContent;
+use VaahCms\Modules\Form\Mail\FormMail;
+use VaahCms\Modules\Form\Models\FormContent;
 
 class BackendController extends Controller
 {

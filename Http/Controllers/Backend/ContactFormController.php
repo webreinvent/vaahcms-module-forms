@@ -1,12 +1,12 @@
-<?php namespace VaahCms\Modules\Forms\Http\Controllers\Backend;
+<?php namespace VaahCms\Modules\Form\Http\Controllers\Backend;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use VaahCms\Modules\Cms\Entities\ContentType;
 use VaahCms\Modules\Cms\Entities\FieldType;
-use VaahCms\Modules\Forms\Models\FormContent;
-use VaahCms\Modules\Forms\Models\FormFieldType;
+use VaahCms\Modules\Form\Models\FormContent;
+use VaahCms\Modules\Form\Models\FormFieldType;
 use WebReinvent\VaahCms\Entities\Theme;
 
 class ContactFormController extends Controller

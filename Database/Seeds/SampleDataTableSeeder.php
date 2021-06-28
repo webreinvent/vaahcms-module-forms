@@ -1,5 +1,5 @@
 <?php
-namespace VaahCms\Modules\Forms\Database\Seeds;
+namespace VaahCms\Modules\Form\Database\Seeds;
 
 
 use Illuminate\Database\Seeder;

@@ -1,4 +1,4 @@
-<?php  namespace VaahCms\Modules\Forms\Http\Controllers\Backend;
+<?php  namespace VaahCms\Modules\Form\Http\Controllers\Backend;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -11,7 +11,7 @@ class ExtendController extends Controller
     //----------------------------------------------------------
     public function __construct()
     {
-        $base_url = route('vh.backend.forms')."#/";
+        $base_url = route('vh.backend.form')."#/";
         $link = $base_url;
         self::$link = $link;
     }
@@ -44,7 +44,7 @@ class ExtendController extends Controller
         $links[0] = [
             'link' => self::$link."content/",
             'icon' => 'file-alt',
-            'label'=> 'Forms'
+            'label'=> 'Form'
         ];
 
         $response['status'] = 'success';

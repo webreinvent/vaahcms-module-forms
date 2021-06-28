@@ -1,4 +1,4 @@
-<?php namespace VaahCms\Modules\Forms\Tests;
+<?php namespace VaahCms\Modules\Form\Tests;
 
 use Laravel\Dusk\TestCase as BaseTestCase;
 use Facebook\WebDriver\Chrome\ChromeOptions;

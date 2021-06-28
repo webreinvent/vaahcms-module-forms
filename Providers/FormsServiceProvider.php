@@ -1,11 +1,11 @@
-<?php namespace VaahCms\Modules\Forms\Providers;
+<?php namespace VaahCms\Modules\Form\Providers;
 
 
 use Illuminate\Routing\Router;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Factory;
-use VaahCms\Modules\Forms\Providers\RouteServiceProvider;
-use VaahCms\Modules\Forms\Providers\EventServiceProvider;
+use VaahCms\Modules\Form\Providers\RouteServiceProvider;
+use VaahCms\Modules\Form\Providers\EventServiceProvider;
 
 class FormsServiceProvider extends ServiceProvider
 {

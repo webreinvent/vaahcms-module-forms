@@ -215,7 +215,7 @@
 
                                                     @if($form && $form->mail_fields && $form->mail_fields->message)
 
-                                                        {!! \VaahCms\Modules\Forms\Http\Controllers\Backend\BackendController::translateDynamicStringOfForms($form->mail_fields->message,$request->all()) !!}
+                                                        {!! \VaahCms\Modules\Form\Http\Controllers\Backend\BackendController::translateDynamicStringOfForms($form->mail_fields->message,$request->all()) !!}
 
                                                     @else
 

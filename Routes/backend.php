@@ -13,18 +13,18 @@
 
 Route::group(
     [
-        'prefix'     => 'backend/forms',
+        'prefix'     => 'backend/form',
         'middleware' => ['web', 'has.backend.access'],
         'namespace' => 'Backend',
     ],
     function () {
         //------------------------------------------------
         Route::get( '/', 'BackendController@index' )
-            ->name( 'vh.backend.forms' );
+            ->name( 'vh.backend.form' );
         //------------------------------------------------
         //------------------------------------------------
         Route::post( '/assets', 'BackendController@getAssets' )
-            ->name( 'vh.backend.forms.assets' );
+            ->name( 'vh.backend.form.assets' );
         //------------------------------------------------
     });
 
@@ -37,7 +37,7 @@ Route::group(
     function () {
         //------------------------------------------------
         Route::post( '/submit', 'BackendController@formSubmit' )
-            ->name( 'vh.backend.forms.submit' );
+            ->name( 'vh.backend.form.submit' );
         //------------------------------------------------
         //------------------------------------------------
     });
@@ -51,7 +51,7 @@ Route::group(
 
 Route::group(
     [
-        'prefix' => 'backend/forms/content-forms',
+        'prefix' => 'backend/form/content',
         'namespace'  => 'Backend',
         'middleware' => ['web', 'has.backend.access'],
     ],
