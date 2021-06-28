@@ -68,7 +68,7 @@ class FormMail extends Mailable
 
 
 
-        return $this->view('forms::backend.emails.form');
+        return $this->view('form::backend.emails.form');
     }
 
 }
