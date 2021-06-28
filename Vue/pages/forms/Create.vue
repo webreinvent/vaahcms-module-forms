@@ -353,20 +353,30 @@
                                                  placeholder="some@email.com" type="email"></b-input>
                                     </b-field>
 
-                                    <b-field label="From" :label-position="label_position">
-                                        <b-input class="mr-3" name="name"
-                                                 v-model="new_item.mail_fields.from.name"
-                                                 placeholder="Name" expanded>
+                                    <label class="label" style="margin-bottom: 0;">From:</label>
 
-                                        </b-input>
-                                        <b-input name="email" placeholder="some@email.com"
-                                                 v-model="new_item.mail_fields.from.email" type="email" expanded>
+                                    <br/>
 
-                                        </b-input>
+                                    <b-field grouped >
+                                        <b-field label="Name" expanded :label-position="label_position">
+                                            <b-input class="mr-3" name="name"
+                                                     v-model="new_item.mail_fields.from.name"
+                                                     placeholder="Name">
+
+                                            </b-input>
+                                        </b-field>
+                                        <b-field label="Email" expanded :label-position="label_position">
+                                            <b-input name="email" placeholder="some@email.com"
+                                                     v-model="new_item.mail_fields.from.email"
+                                                     type="email">
+
+                                            </b-input>
+                                        </b-field>
                                     </b-field>
 
                                     <b-field label="Subject" :label-position="label_position">
-                                        <b-input placeholder="Subject" v-model="new_item.mail_fields.subject"></b-input>
+                                        <b-input placeholder="Subject"
+                                                 v-model="new_item.mail_fields.subject"></b-input>
                                     </b-field>
 
                                     <b-field label="Message Body" :label-position="label_position">

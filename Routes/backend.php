@@ -58,34 +58,34 @@ Route::group(
     function () {
         //---------------------------------------------------------
         Route::get('/assets', 'ContactFormController@getAssets')
-            ->name('backend.cms.content.types.assets');
+            ->name('backend.form.content.assets');
         //---------------------------------------------------------
         Route::post('/create', 'ContactFormController@postCreate')
-            ->name('backend.cms.content.types.create');
+            ->name('backend.form.content.create');
         //---------------------------------------------------------
         Route::get('/list', 'ContactFormController@getList')
-            ->name('backend.cms.content.types.list');
+            ->name('backend.form.content.list');
         //---------------------------------------------------------
         Route::get('/item/{id}', 'ContactFormController@getItem')
-            ->name('backend.cms.content.types.item');
+            ->name('backend.form.content.item');
         //---------------------------------------------------------
         Route::post('/item/{id}/relations', 'ContactFormController@getItemRelations')
-            ->name('backend.cms.content.types.item.relations');
+            ->name('backend.form.content.item.relations');
         //---------------------------------------------------------
         Route::post('/store/{id}', 'ContactFormController@postStore')
-            ->name('backend.cms.content.types.store');
+            ->name('backend.form.content.store');
         //---------------------------------------------------------
         Route::post('/store/{id}/groups', 'ContactFormController@postStoreGroups')
-            ->name('backend.cms.content.types.store.groups');
+            ->name('backend.form.content.store.groups');
         //---------------------------------------------------------
         Route::post('/actions/{action_name}', 'ContactFormController@postActions')
-            ->name('backend.cms.content.types.actions');
+            ->name('backend.form.content.actions');
         //---------------------------------------------------------
         Route::get('/getModuleSections', 'ContactFormController@getModuleSections')
-            ->name('backend.cms.content.types.module-section');
+            ->name('backend.form.content.module-section');
         //---------------------------------------------------------
         Route::post('/upload', 'ContactFormController@upload')
-            ->name('backend.cms.media.upload');
+            ->name('backend.form.media.upload');
         //---------------------------------------------------------
     });
 

@@ -143,7 +143,9 @@ export default {
             {
                 this.title = data.name;
 
-                if(data.action_url.includes('https://') || data.action_url.includes('http://')){
+                if(data.action_url &&
+                    (data.action_url.includes('https://')
+                        || data.action_url.includes('http://'))){
                     this.url_type = 'external';
                 }
 

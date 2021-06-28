@@ -14,11 +14,13 @@ class VhFormContentsTable extends Migration
     public function up()
     {
 
+        Schema::dropIfExists('vh_form_contents');
+
         Schema::create('vh_form_contents', function (Blueprint $table) {
             $table->increments('id');
             $table->uuid('uuid')->nullable()->index();
 
-             $table->string('name')->nullable()->index();
+            $table->string('name')->nullable()->index();
             $table->string('slug')->nullable()->index();
             $table->boolean('is_published')->nullable()->index();
             $table->boolean('is_use_default_url')->nullable()->index();
@@ -46,6 +48,6 @@ class VhFormContentsTable extends Migration
     */
     public function down()
     {
-        Schema::dropIfExists('vh_form_contact_forms');
+        Schema::dropIfExists('vh_form_contents');
     }
 }

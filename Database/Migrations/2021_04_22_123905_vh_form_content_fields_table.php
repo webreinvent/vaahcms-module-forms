@@ -46,6 +46,6 @@ class VhFormContentFieldsTable extends Migration
     */
     public function down()
     {
-        Schema::dropIfExists('vh_form_contact_form_fields');
+        Schema::dropIfExists('vh_form_content_fields');
     }
 }
