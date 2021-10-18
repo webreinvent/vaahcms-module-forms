@@ -39,7 +39,7 @@ function get_form_field(\VaahCms\Modules\Forms\Models\FormContent $form)
         return false;
     }
 
-    $url = url('/form/submit');
+    $url = url('/forms/submit');
 
     if(!$form->is_use_default_url){
         if(strpos($form->action_url, 'https://') !== false

@@ -11,7 +11,7 @@ class ExtendController extends Controller
     //----------------------------------------------------------
     public function __construct()
     {
-        $base_url = route('vh.backend.form')."#/";
+        $base_url = route('vh.backend.forms')."#/";
         $link = $base_url;
         self::$link = $link;
     }
@@ -44,7 +44,7 @@ class ExtendController extends Controller
         $links[0] = [
             'link' => self::$link."content/",
             'icon' => 'file-alt',
-            'label'=> 'Form'
+            'label'=> 'Forms'
         ];
 
         $response['status'] = 'success';

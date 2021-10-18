@@ -5,8 +5,8 @@ let base_url = document.getElementsByTagName('base')[0].getAttribute("href");
 let debug = document.getElementById('debug').getAttribute('content');
 //---------/Variables
 
-let json_url = base_url+"/backend/form/json";
-let ajax_url = base_url+"/backend/form/content";
+let json_url = base_url+"/backend/forms/json";
+let ajax_url = base_url+"/backend/forms/content";
 
 export default {
     namespaced: true,

@@ -13,13 +13,13 @@
 
 Route::group(
     [
-        'prefix'     => 'form',
+        'prefix'     => 'forms',
         'middleware' => ['web'],
         'namespace' => 'Frontend',
     ],
     function () {
         //------------------------------------------------
         Route::get( '/', 'FrontendController@index' )
-        ->name( 'vh.frontend.form' );
+        ->name( 'vh.frontend.forms' );
         //------------------------------------------------
     });

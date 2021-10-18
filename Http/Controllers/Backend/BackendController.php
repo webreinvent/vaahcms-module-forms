@@ -17,7 +17,7 @@ class BackendController extends Controller
 
     public function index()
     {
-        return view('form::backend.pages.app');
+        return view('forms::backend.pages.app');
     }
 
     public function getAssets(Request $request)
@@ -42,7 +42,7 @@ class BackendController extends Controller
 
             $i = 0;
 
-            $forlder_path = 'public/form/media/'.date('Y')."/".date('m');
+            $forlder_path = 'public/forms/media/'.date('Y')."/".date('m');
 
             foreach ($request->file() as $index => $file){
 
@@ -107,6 +107,7 @@ class BackendController extends Controller
         if($form && $form->mail_fields && $form->mail_fields->to){
             $to = self::translateDynamicStringOfForms($form->mail_fields->to,$input);
         }
+
 
         try{
             \Mail::to($to)->send(new FormMail($input, $form, $attachments));
