@@ -1,6 +1,6 @@
-<?php namespace VaahCms\Modules\Form\Tests\Browser;
+<?php namespace VaahCms\Modules\Forms\Tests\Browser;
 
-use VaahCms\Modules\Form\Tests\DuskTestCase;
+use VaahCms\Modules\Forms\Tests\DuskTestCase;
 use Laravel\Dusk\Browser;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 

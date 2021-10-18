@@ -1,5 +1,5 @@
 # vaahcms-module-cms
-Form Module for VaahCMS
+Forms Module for VaahCMS
 
 #### New Version Release
 - Version should be updated in `composer.json` and `Config/config.php` file

@@ -11,7 +11,7 @@
     */
 
 /*!
- * Font Awesome Free 5.15.3 by @fontawesome - https://fontawesome.com
+ * Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com
  * License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
  */
 
@@ -24,7 +24,7 @@
 /*!
  * jodit - Jodit is awesome and usefully wysiwyg editor with filebrowser
  * Author: Chupurnov <chupurnov@gmail.com> (https://xdsoft.net/)
- * Version: v3.7.1
+ * Version: v3.8.6
  * Url: https://xdsoft.net/jodit/
  * License(s): MIT
  */
@@ -52,11 +52,11 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright (c) 2011-2020 Jos de Jong, http://jsoneditoronline.org
+ * Copyright (c) 2011-2021 Jos de Jong, http://jsoneditoronline.org
  *
  * @author  Jos de Jong, <wjosdejong@gmail.com>
- * @version 9.1.1
- * @date    2020-09-23
+ * @version 9.5.3
+ * @date    2021-07-28
  */
 
 /*!
@@ -65,7 +65,7 @@
  * @license MIT
  */
 
-/** @license URI.js v4.4.0 (c) 2011 Gary Court. License: http://github.com/garycourt/uri-js */
+/** @license URI.js v4.4.1 (c) 2011 Gary Court. License: http://github.com/garycourt/uri-js */
 
 /**!
  * Sortable 1.10.2

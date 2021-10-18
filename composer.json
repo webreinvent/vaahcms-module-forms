@@ -14,7 +14,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "VaahCms\\Modules\\Form\\Providers\\FormsServiceProvider"
+                "VaahCms\\Modules\\Forms\\Providers\\FormsServiceProvider"
             ],
             "aliases": {
             }
@@ -22,7 +22,7 @@
     },
     "autoload": {
         "psr-4": {
-            "VaahCms\\Modules\\Form\\": ""
+            "VaahCms\\Modules\\Forms\\": ""
         }
     }
 }

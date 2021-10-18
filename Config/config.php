@@ -1,12 +1,12 @@
 <?php
 
 return [
-    "name"=> "Form",
-    "title"=> "Form",
-    "slug"=> "form",
+    "name"=> "Forms",
+    "title"=> "Forms",
+    "slug"=> "forms",
     "thumbnail"=> "https://placehold.jp/300x160.png",
-    "excerpt"=> "Create Form",
-    "description"=> "Create Form",
+    "excerpt"=> "Create Forms",
+    "description"=> "Create Forms",
     "download_link"=> "",
     "author_name"=> "form",
     "author_website"=> "https://vaah.dev",
@@ -15,7 +15,7 @@ return [
     "is_sample_data_available"=> true,
     "db_table_prefix"=> "vh_form_",
     "providers"=> [
-        "\\VaahCms\\Modules\\Form\\Providers\\FormsServiceProvider"
+        "\\VaahCms\\Modules\\Forms\\Providers\\FormsServiceProvider"
     ],
     "aside-menu-order"=> null
 ];

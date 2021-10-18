@@ -1,4 +1,4 @@
-<?php namespace VaahCms\Modules\Form\Models;
+<?php namespace VaahCms\Modules\Forms\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;

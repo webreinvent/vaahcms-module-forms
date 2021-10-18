@@ -1,4 +1,4 @@
-<?php namespace VaahCms\Modules\Form\Providers;
+<?php namespace VaahCms\Modules\Forms\Providers;
 
 use Illuminate\Support\Facades\Event;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;

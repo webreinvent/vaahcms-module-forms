@@ -1,14 +1,14 @@
 <?php
 
 
-namespace  VaahCms\Modules\Form\Mail;
+namespace  VaahCms\Modules\Forms\Mail;
 
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Mail\Mailable;
-use VaahCms\Modules\Form\Http\Controllers\Backend\BackendController;
-use VaahCms\Modules\Form\Models\FormContent;
+use VaahCms\Modules\Forms\Http\Controllers\Backend\BackendController;
+use VaahCms\Modules\Forms\Models\FormContent;
 
 
 class FormMail extends Mailable

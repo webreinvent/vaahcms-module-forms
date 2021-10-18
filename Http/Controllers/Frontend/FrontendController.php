@@ -1,4 +1,4 @@
-<?php namespace VaahCms\Modules\Form\Http\Controllers\Frontend;
+<?php namespace VaahCms\Modules\Forms\Http\Controllers\Frontend;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;

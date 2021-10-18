@@ -1,4 +1,4 @@
-<?php namespace VaahCms\Modules\Form\Tests;
+<?php namespace VaahCms\Modules\Forms\Tests;
 
 use Illuminate\Contracts\Console\Kernel;
 
